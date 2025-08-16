@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhishek Patel - Software Developer</title>
+    <meta name="description" content="Aspiring software developer specializing in backend and full-stack development. Passionate about building scalable solutions.">
+    <meta name="keywords" content="software developer, full-stack developer, Java, web development">
+    
+    <style>
+        /* CSS Variables for Theme */
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #3b82f6;
+            --bg-color: #ffffff;
+            --surface-color: #f8fafc;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --border-color: #e2e8f0;
+            --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-large: 0 10px 25px rgba(0, 0, 0, 0.1);
+            --gradient-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #0f172a;
+            --surface-color: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --border-color: #334155;
+            --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.3);
+            --shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.3);
+            --shadow-large: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-color);
+            transition: all 0.3s ease;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(248, 250, 252, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] .navbar {
+            background: rgba(15, 23, 42, 0.95);
+        }
+
+        .navbar.scrolled {
+            box-shadow: var(--shadow-medium);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary-color);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background: var(--surface-color);
+            transform: scale(1.1);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: var(--gradient-bg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.1;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+            color: white;
+            z-index: 1;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.3s forwards;
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.6s forwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: var(--primary-color);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-large);
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.9s forwards;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .profile-image {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            transition: all 0.4s ease;
+            animation: float 3s ease-in-out infinite;
+            border: 4px solid var(--primary-color);
+            box-shadow: var(--shadow-large);
+        }
+
+        .profile-image:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.3);
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        .about-text h3 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: var(--primary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            border: 4px solid var(--bg-color);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(odd)::after {
+            right: -12px;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -12px;
+        }
+
+        .timeline-content {
+            padding: 1.5rem;
+            background: var(--surface-color);
+            border-radius: 15px;
+            box-shadow: var(--shadow-medium);
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+        }
+
+        .timeline-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content .date {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Projects Section */
+        .project-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--text-primary);
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--surface-color);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow-medium);
+            transition: all 0.3s ease;
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .project-card.hidden {
+            opacity: 0;
+            transform: scale(0.8);
+            pointer-events: none;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-large);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: var(--gradient-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .project-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tech-tag {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.2rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--surface-color);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-medium);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-category h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            justify-content: center;
+        }
+
+        .skill-badge {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-badge:hover {
+            background: var(--secondary-color);
+            transform: scale(1.05);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--surface-color);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .contact-item .icon {
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.8rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            background: var(--bg-color);
+            color: var(--text-primary);
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .download-resume {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .download-resume:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-primary);
+            color: var(--bg-color);
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: var(--bg-color);
+                flex-direction: column;
+                justify-content: start;
+                align-items: center;
+                padding-top: 2rem;
+                transition: left 0.3s ease;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .profile-image {
+                width: 250px;
+                height: 250px;
+                justify-self: center;
+            }
+
+            .timeline::after {
+                left: 20px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 60px;
+                padding-right: 20px;
+            }
+
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-item::after {
+                left: 8px;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .hero-content {
+                padding: 0 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">AP</a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">🌙</button>
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Abhishek Patel</h1>
+            <p class="subtitle">Aspiring Software Developer | Backend & Full-Stack Enthusiast</p>
+            <a href="#contact" class="cta-button">Let's Connect</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">About Me</h2>
+            <div class="about-content animate-on-scroll">
+                <img src="abhishek.jpg" alt="Abhishek Patel - Software Developer" class="profile-image">
+                <div class="about-text">
+                    <h3>Hello, I'm Abhishek!</h3>
+                    <p>I'm an aspiring software developer with a strong focus on backend and full-stack development. Currently pursuing B-Tech in Computer Science & Engineering at Bansal Institute of Science & Technology, Bhopal.</p>
+                    <p>I'm passionate about building scalable, real-world solutions through continuous learning and problem-solving. With experience in Java, web technologies, and database management, I love creating efficient and user-friendly applications.</p>
+                    <p>My journey in programming has been marked by consistent learning - I've solved 230+ problems on GeeksforGeeks and LeetCode, and achieved a 72nd percentile in CoCubes Assessment, demonstrating strong analytical and coding skills.</p>
+                    <a href="#" class="download-resume" onclick="downloadResume()">Download Resume</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience/Timeline Section -->
+    <section class="section" id="experience">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Experience & Education</h2>
+            <div class="timeline animate-on-scroll">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>B-Tech in Computer Science & Engineering</h3>
+                        <div class="date">2022 - 2026</div>
+                        <p>Bansal Institute of Science & Technology, Bhopal</p>
+                        <p><strong>CGPA:</strong> 8.45</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Class 12th (MP Board)</h3>
+                        <div class="date">2021 - 2022</div>
+                        <p>Adarsh Narmada Higher Secondary School, Gangeo</p>
+                        <p><strong>Score:</strong> 91%</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Class 10th (MP Board)</h3>
+                        <div class="date">2019 - 2020</div>
+                        <p>Adarsh Narmada Higher Secondary School, Gangeo</p>
+                        <p><strong>Score:</strong> 94.75%</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Java Basic Certification</h3>
+                        <div class="date">HackerRank</div>
+                        <p>Certified in Java fundamentals and programming concepts</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Problem Solving Certification</h3>
+                        <div class="date">HackerRank</div>
+                        <p>Certified in algorithmic problem solving and data structures</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section" id="projects">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Featured Projects</h2>
+            <div class="project-filters animate-on-scroll">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="web">Web Development</button>
+                <button class="filter-btn" data-filter="java">Java</button>
+                <button class="filter-btn" data-filter="mobile">Mobile</button>
+            </div>
+            <div class="projects-grid animate-on-scroll">
+                <div class="project-card" data-category="web java">
+                    <div class="project-image">🛒</div>
+                    <div class="project-content">
+                        <h3>KiddyKart - E-Commerce Platform</h3>
+                        <p>Developed a comprehensive online kids' shopping platform with user authentication, product browsing, cart management, and admin panel functionality.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">JSP</span>
+                            <span class="tech-tag">Servlets</span>
+                            <span class="tech-tag">MySQL</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/abhishek0112cs221008/KiddyKart" class="project-link">GitHub</a>
+                            <a href="https://kiddykart.onrender.com/" class="project-link">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card" data-category="java">
+                    <div class="project-image">📚</div>
+                    <div class="project-content">
+                        <h3>Library Management System</h3>
+                        <p>Designed a CLI-based system with MySQL integration for managing library operations including user registration, book issue/return, and history tracking.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">JDBC</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/abhishek0112cs221008/Library-Management-System" class="project-link">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card" data-category="mobile">
+                    <div class="project-image">💰</div>
+                    <div class="project-content">
+                        <h3>Expense Tracker App</h3>
+                        <p>Built a futuristic personal finance tracker with real-time balance updates, categorization, monthly/yearly insights, and offline storage capabilities.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag">SQLite</span>
+                            <span class="tech-tag">Dart</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/abhishek0112cs221008/project_track_your_finance" class="project-link">GitHub</a>
+                            <a href="https://www.indusappstore.com/apps/finance/finance-tracker/com.example.project_track_your_finance/?page=details&id=com.example.project_track_your_finance" class="project-link">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section" id="skills">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Technical Skills</h2>
+            <div class="skills-container animate-on-scroll">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <div class="skills-list">
+                        <span class="skill-badge">Java</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Web Technologies</h3>
+                    <div class="skills-list">
+                        <span class="skill-badge">HTML</span>
+                        <span class="skill-badge">CSS</span>
+                        <span class="skill-badge">JavaScript</span>
+                        <span class="skill-badge">JSP</span>
+                        <span class="skill-badge">Servlets</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Concepts</h3>
+                    <div class="skills-list">
+                        <span class="skill-badge">Data Structures</span>
+                        <span class="skill-badge">Algorithms</span>
+                        <span class="skill-badge">OOP</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Tools & Technologies</h3>
+                    <div class="skills-list">
+                        <span class="skill-badge">Git</span>
+                        <span class="skill-badge">GitHub</span>
+                        <span class="skill-badge">MySQL</span>
+                        <span class="skill-badge">Android Studio</span>
+                        <span class="skill-badge">VS Code</span>
+                        <span class="skill-badge">Flutter</span>
+                        <span class="skill-badge">SQLite</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Get In Touch</h2>
+            <div class="contact-content animate-on-scroll">
+                <div class="contact-info">
+                    <h3>Let's Connect!</h3>
+                    <p>I'm always open to discussing new opportunities, interesting projects, or just having a chat about technology.</p>
+                    
+                    <div class="contact-item">
+                        <div class="icon">📧</div>
+                        <span>0112cs221008@gmail.com</span>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="icon">📱</div>
+                        <span>+91 8770321224</span>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="icon">📍</div>
+                        <span>Anand Nagar, Bhopal (MP), India</span>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="icon">💼</div>
+                        <a href="https://linkedin.com/in/abhishek68/" target="_blank" style="color: var(--primary-color); text-decoration: none;">LinkedIn Profile</a>
+                    </div>
+                </div>
+                
+                <form class="contact-form" id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Your message here..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Abhishek Patel. Built with passion and dedication. <a href="https://linkedin.com/in/abhishek68/">Connect with me</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        body.setAttribute('data-theme', savedTheme);
+        updateThemeIcon();
+        
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon();
+        });
+        
+        function updateThemeIcon() {
+            const theme = body.getAttribute('data-theme');
+            themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+        }
+        
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const navMenu = document.getElementById('nav-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const isOpen = navMenu.classList.contains('active');
+            mobileMenuBtn.textContent = isOpen ? '✕' : '☰';
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileMenuBtn.textContent = '☰';
+            });
+        });
+        
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Active nav link highlighting
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('section[id]');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.clientHeight;
+                
+                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Project filtering
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                const filter = btn.getAttribute('data-filter');
+                
+                projectCards.forEach(card => {
+                    if (filter === 'all') {
+                        card.classList.remove('hidden');
+                    } else {
+                        const categories = card.getAttribute('data-category').split(' ');
+                        if (categories.includes(filter)) {
+                            card.classList.remove('hidden');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    }
+                });
+            });
+        });
+        
+        // Smooth scroll animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Contact form handling
+        const contactForm = document.getElementById('contact-form');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(contactForm);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const message = formData.get('message');
+            
+            // Simulate form submission (in real application, you'd send to server)
+            const submitBtn = contactForm.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                submitBtn.textContent = 'Message Sent!';
+                submitBtn.style.background = '#10b981';
+                
+                // Reset form
+                contactForm.reset();
+                
+                setTimeout(() => {
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.style.background = '';
+                }, 2000);
+            }, 1500);
+        });
+        
+        // Download resume function
+        function downloadResume() {
+            // Create a simple text resume content
+            const resumeContent = `
+ABHISHEK PATEL
+Aspiring Software Developer
+
+Contact Information:
+Email: 0112cs221008@gmail.com
+Phone: +91 8770321224
+Address: Anand Nagar, Bhopal (MP), India
+LinkedIn: linkedin.com/in/abhishek68/
+
+CAREER OBJECTIVE:
+Aspiring software developer with a focus on backend and full-stack development. 
+Passionate about building scalable, real-world solutions through continuous learning and problem-solving.
+
+EDUCATION:
+• B-Tech in Computer Science & Engineering (2022-2026)
+  Bansal Institute of Science & Technology, Bhopal
+  CGPA: 8.45
+
+• Class 12th (MP Board) - 91% (2021-2022)
+  Adarsh Narmada Higher Secondary School, Gangeo
+
+• Class 10th (MP Board) - 94.75% (2019-2020)
+  Adarsh Narmada Higher Secondary School, Gangeo
+
+TECHNICAL SKILLS:
+• Programming Languages: Java
+• Web Technologies: HTML, CSS, JavaScript, JSP, Servlets
+• Concepts: Data Structures & Algorithms (DSA), Object-Oriented Programming (OOP)
+• Tools: Git, GitHub, Android Studio, VSCode, MySQL
+
+PROJECTS:
+1. KiddyKart – Online E-Commerce Platform
+   • Technologies: Java, JSP, Servlets, MySQL
+   • Features: User login, product browse, cart management, order placement, admin panel
+
+2. Library Management System
+   • Technologies: Java, MySQL, JDBC
+   • Features: CLI-based system with user login/registration, book issue/return, history tracking
+
+3. Expense Tracker App
+   • Technologies: Flutter, SQLite
+   • Features: Real-time balance updates, categorization, monthly/yearly insights, offline storage
+
+CERTIFICATIONS:
+• Java Basic - HackerRank
+• Problem Solving (Basic) - HackerRank
+
+ADDITIONAL INFORMATION:
+• CoCubes Assessment Score: 518/800 (National Percentile: 72)
+• DSA Practice: Solved 230+ problems on GeeksforGeeks and LeetCode
+            `;
+            
+            // Create and download the file
+            const element = document.createElement('a');
+            const file = new Blob([resumeContent], {type: 'text/plain'});
+            element.href = URL.createObjectURL(file);
+            element.download = 'Abhishek_Patel_Resume.txt';
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+        }
+        
+        // Typing effect for hero section (optional enhancement)
+        const heroSubtitle = document.querySelector('.hero .subtitle');
+        const text = heroSubtitle.textContent;
+        heroSubtitle.textContent = '';
+        
+        let i = 0;
+        function typeWriter() {
+            if (i < text.length) {
+                heroSubtitle.textContent += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 50);
+            }
+        }
+        
+        // Start typing effect after hero animation
+        setTimeout(typeWriter, 1500);
+    </script>
+</body>
+</html>
