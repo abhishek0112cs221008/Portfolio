@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1270,4 +1271,319 @@ ADDITIONAL INFORMATION:
         setTimeout(typeWriter, 1500);
     </script>
 </body>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhishek Patel - Software Developer</title>
+    <meta name="description" content="Aspiring software developer specializing in backend and full-stack development. Passionate about building scalable solutions.">
+    <meta name="keywords" content="software developer, full-stack developer, Java, web development">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">AP</a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">🌙</button>
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Abhishek Patel</h1>
+            <p class="subtitle">Aspiring Software Developer | Backend & Full-Stack Enthusiast</p>
+            <a href="#contact" class="cta-button">Let's Connect</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">About Me</h2>
+            <div class="about-content animate-on-scroll">
+                <img src="assets/abhishek.png" alt="Abhishek Patel - Software Developer" class="profile-image">
+                <div class="about-text">
+                    <h3>Hello, I'm Abhishek!</h3>
+                    <p>I'm an aspiring software developer with a strong focus on backend and full-stack development. Currently pursuing B-Tech in Computer Science & Engineering at Bansal Institute of Science & Technology, Bhopal.</p>
+                    <p>I'm passionate about building scalable, real-world solutions through continuous learning and problem-solving. With experience in Java, web technologies, and database management, I love creating efficient and user-friendly applications.</p>
+                    <p>My journey in programming has been marked by consistent learning - I've solved 230+ problems on GeeksforGeeks and LeetCode, and achieved a 72nd percentile in CoCubes Assessment, demonstrating strong analytical and coding skills.</p>
+                    <a href="#" class="download-resume" onclick="downloadResume()">Download Resume</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience/Timeline Section -->
+    <section class="section" id="experience">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Experience & Education</h2>
+            <div class="timeline animate-on-scroll">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>B-Tech in Computer Science & Engineering</h3>
+                        <div class="date">2022 - 2026</div>
+                        <p>Bansal Institute of Science & Technology, Bhopal</p>
+                        <p><strong>CGPA:</strong> 8.45</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Class 12th (MP Board)</h3>
+                        <div class="date">2021 - 2022</div>
+                        <p>Adarsh Narmada Higher Secondary School, Gangeo</p>
+                        <p><strong>Score:</strong> 91%</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Class 10th (MP Board)</h3>
+                        <div class="date">2019 - 2020</div>
+                        <p>Adarsh Narmada Higher Secondary School, Gangeo</p>
+                        <p><strong>Score:</strong> 94.75%</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Java Basic Certification</h3>
+                        <div class="date">HackerRank</div>
+                        <p>Certified in Java fundamentals and programming concepts</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Problem Solving Certification</h3>
+                        <div class="date">HackerRank</div>
+                        <p>Certified in algorithmic problem solving and data structures</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section" id="projects">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Featured Projects</h2>
+            <div class="project-filters animate-on-scroll">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="web">Web Development</button>
+                <button class="filter-btn" data-filter="java">Java</button>
+                <button class="filter-btn" data-filter="mobile">Mobile</button>
+            </div>
+            <div class="projects-grid animate-on-scroll">
+                <div class="project-card" data-category="web java">
+                    <div class="project-image">🛒</div>
+                    <div class="project-content">
+                        <h3>KiddyKart - E-Commerce Platform</h3>
+                        <p>Developed a comprehensive online kids' shopping platform with user authentication, product browsing, cart management, and admin panel functionality.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">JSP</span>
+                            <span class="tech-tag">Servlets</span>
+                            <span class="tech-tag">MySQL</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/abhishek0112cs221008/KiddyKart" class="project-link">GitHub</a>
+                            <a href="https://kiddykart.onrender.com/" class="project-link">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card" data-category="java">
+                    <div class="project-image">📚</div>
+                    <div class="project-content">
+                        <h3>Library Management System</h3>
+                        <p>Designed a CLI-based system with MySQL integration for managing library operations including user registration, book issue/return, and history tracking.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">JDBC</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/abhishek0112cs221008/Library-Management-System" class="project-link">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card" data-category="mobile">
+                    <div class="project-image">💰</div>
+                    <div class="project-content">
+                        <h3>Expense Tracker App</h3>
+                        <p>Built a futuristic personal finance tracker with real-time balance updates, categorization, monthly/yearly insights, and offline storage capabilities.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag">SQLite</span>
+                            <span class="tech-tag">Dart</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/abhishek0112cs221008/project_track_your_finance" class="project-link">GitHub</a>
+                            <a href="https://www.indusappstore.com/apps/finance/finance-tracker/com.example.project_track_your_finance/?page=details&id=com.example.project_track_your_finance" class="project-link">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section" id="skills">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Technical Skills</h2>
+            <div class="skills-container animate-on-scroll">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <div class="skills-list">
+                        <span class="skill-badge">Java</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Web Technologies</h3>
+                    <div class="skills-list">
+                        <span class="skill-badge">HTML</span>
+                        <span class="skill-badge">CSS</span>
+                        <span class="skill-badge">JavaScript</span>
+                        <span class="skill-badge">JSP</span>
+                        <span class="skill-badge">Servlets</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Concepts</h3>
+                    <div class="skills-list">
+                        <span class="skill-badge">Data Structures</span>
+                        <span class="skill-badge">Algorithms</span>
+                        <span class="skill-badge">OOP</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Tools & Technologies</h3>
+                    <div class="skills-list">
+                        <span class="skill-badge">Git</span>
+                        <span class="skill-badge">GitHub</span>
+                        <span class="skill-badge">MySQL</span>
+                        <span class="skill-badge">Android Studio</span>
+                        <span class="skill-badge">VS Code</span>
+                        <span class="skill-badge">Flutter</span>
+                        <span class="skill-badge">SQLite</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Get In Touch</h2>
+            <div class="contact-content animate-on-scroll">
+                <div class="contact-info">
+                    <h3>Let's Connect!</h3>
+                    <p>I'm always open to discussing new opportunities, interesting projects, or just having a chat about technology.</p>
+                    
+                    <div class="contact-item">
+                        <div class="icon">📧</div>
+                        <span>0112cs221008@gmail.com</span>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="icon">📱</div>
+                        <span>+91 8770321224</span>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="icon">📍</div>
+                        <span>Anand Nagar, Bhopal (MP), India</span>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="icon">💼</div>
+                        <a href="https://linkedin.com/in/abhishek68/" target="_blank" style="color: var(--primary-color); text-decoration: none;">LinkedIn Profile</a>
+                    </div>
+                </div>
+                
+                <form class="contact-form" id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Your message here..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Abhishek Patel. Built with passion and dedication. <a href="https://linkedin.com/in/abhishek68/">Connect with me</a></p>
+        </div>
+    </footer>
+
+    <!-- Chatbot -->
+    <div class="chatbot-container">
+        <button class="chatbot-toggle" id="chatbot-toggle" aria-label="Open FAQ Chatbot">
+            💬
+        </button>
+        <div class="chatbot-window" id="chatbot-window">
+            <div class="chatbot-header">
+                <h3>Abhishek's Assistant</h3>
+                <button class="chatbot-close" id="chatbot-close" aria-label="Close chatbot">✕</button>
+            </div>
+            <div class="chatbot-messages" id="chatbot-messages">
+                <div class="message bot">
+                    👋 Hi! I'm Abhishek's assistant. Ask me anything about his education, skills, projects, or experience!
+                </div>
+                <div class="quick-questions">
+                    <button class="quick-question" onclick="askQuestion('What are your technical skills?')">🔧 What are your technical skills?</button>
+                    <button class="quick-question" onclick="askQuestion('Tell me about your projects')">💼 Tell me about your projects</button>
+                    <button class="quick-question" onclick="askQuestion('What is your education background?')">🎓 What is your education background?</button>
+                    <button class="quick-question" onclick="askQuestion('How can I contact you?')">📞 How can I contact you?</button>
+                </div>
+            </div>
+            <div class="typing-indicator" id="typing-indicator">
+                <span>Abhishek is typing</span>
+                <div class="typing-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div class="chatbot-input-container">
+                <input type="text" class="chatbot-input" id="chatbot-input" placeholder="Ask me anything..." maxlength="200">
+                <button class="chatbot-send" id="chatbot-send">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+>>>>>>> b30ca39 (add chatboat)
 </html>
