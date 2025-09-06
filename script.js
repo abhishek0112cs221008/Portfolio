@@ -155,9 +155,13 @@ contactForm.addEventListener('submit', (e) => {
     }, 1500);
 });
 
-// Download resume function
+
+
 function downloadResume() {
-    // Create a simple text resume content
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    // Same resume content you already have
     const resumeContent = `
 ABHISHEK PATEL
 Aspiring Software Developer
@@ -174,14 +178,14 @@ Passionate about building scalable, real-world solutions through continuous lear
 
 EDUCATION:
 • B-Tech in Computer Science & Engineering (2022-2026)
-Bansal Institute of Science & Technology, Bhopal
-CGPA: 8.45
+  Bansal Institute of Science & Technology, Bhopal
+  CGPA: 8.45
 
 • Class 12th (MP Board) - 91% (2021-2022)
-Adarsh Narmada Higher Secondary School, Gangeo
+  Adarsh Narmada Higher Secondary School, Gangeo
 
 • Class 10th (MP Board) - 94.75% (2019-2020)
-Adarsh Narmada Higher Secondary School, Gangeo
+  Adarsh Narmada Higher Secondary School, Gangeo
 
 TECHNICAL SKILLS:
 • Programming Languages: Java
@@ -191,16 +195,16 @@ TECHNICAL SKILLS:
 
 PROJECTS:
 1. KiddyKart – Online E-Commerce Platform
-• Technologies: Java, JSP, Servlets, MySQL
-• Features: User login, product browse, cart management, order placement, admin panel
+   • Technologies: Java, JSP, Servlets, MySQL
+   • Features: User login, product browse, cart management, order placement, admin panel
 
 2. Library Management System
-• Technologies: Java, MySQL, JDBC
-• Features: CLI-based system with user login/registration, book issue/return, history tracking
+   • Technologies: Java, MySQL, JDBC
+   • Features: CLI-based system with user login/registration, book issue/return, history tracking
 
 3. Expense Tracker App
-• Technologies: Flutter, SQLite
-• Features: Real-time balance updates, categorization, monthly/yearly insights, offline storage
+   • Technologies: Flutter, SQLite
+   • Features: Real-time balance updates, categorization, monthly/yearly insights, offline storage
 
 CERTIFICATIONS:
 • Java Basic - HackerRank
@@ -209,16 +213,17 @@ CERTIFICATIONS:
 ADDITIONAL INFORMATION:
 • CoCubes Assessment Score: 518/800 (National Percentile: 72)
 • DSA Practice: Solved 230+ problems on GeeksforGeeks and LeetCode
-    `;
-    
-    // Create and download the file
-    const element = document.createElement('a');
-    const file = new Blob([resumeContent], {type: 'text/plain'});
-    element.href = URL.createObjectURL(file);
-    element.download = 'Abhishek_Patel_Resume.txt';
-    document.body.appendChild(element);
-    element.click();
-    document.body.removeChild(element);
+`;
+
+    // Add text into PDF (auto wraps long lines)
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(11);
+    const margin = 15;
+    const pageWidth = doc.internal.pageSize.getWidth() - margin * 2;
+    doc.text(resumeContent, margin, 20, { maxWidth: pageWidth, lineHeightFactor: 1.4 });
+
+    // Save file as PDF
+    doc.save("Abhishek_Patel_Resume.pdf");
 }
 
 // Typing effect for hero section (optional enhancement)
