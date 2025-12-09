@@ -27,7 +27,7 @@
 
 Welcome to my personal portfolio! This is a modern, high-performance website designed to showcase my journey as a Software Development Engineer. It bridges the gap between robust backend systems and beautiful, interactive frontends.
 
-> **Live Demo**: [abhishek-portfolio.com](https://abhishek-portfolio.com/) *(Add your deployment link here)*
+> **Live Demo**: [https://abhishek0112cs221008.github.io/Portfolio/](https://abhishek0112cs221008.github.io/Portfolio/) 
 
 ## ✨ Key Features
 
