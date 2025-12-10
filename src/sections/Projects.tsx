@@ -10,10 +10,10 @@ const Projects = () => {
     return (
         <Section id="projects">
             <h2 className="text-4xl font-bold mb-12 text-center">
-                <span className="text-pink-500">03.</span> Featured Projects
+                <span className="text-pink-500">04.</span> Featured Projects
             </h2>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8">
                 {projects.map((project) => (
                     <ProjectCard
                         key={project.id}

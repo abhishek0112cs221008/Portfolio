@@ -89,7 +89,7 @@ const Hero = () => {
                         variants={fadeInRight}
                         initial="hidden"
                         animate="show"
-                        className="relative hidden lg:block"
+                        className="relative block mt-12 lg:mt-0"
                     >
                         <div className="relative w-full aspect-square max-w-md mx-auto">
                             {/* Floating Background Shapes */}

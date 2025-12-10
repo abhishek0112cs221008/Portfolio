@@ -27,11 +27,11 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, project }) => {
                     initial={{ scale: 0.9, opacity: 0, y: 20 }}
                     animate={{ scale: 1, opacity: 1, y: 0 }}
                     exit={{ scale: 0.9, opacity: 0, y: 20 }}
-                    className="relative bg-[#1a1a1a] border border-white/10 rounded-2xl p-6 md:p-8 max-w-2xl w-full shadow-2xl overflow-y-auto max-h-[90vh]"
+                    className="relative bg-[#1a1a1a] border border-white/10 rounded-2xl p-4 md:p-8 max-w-2xl w-full shadow-2xl overflow-y-auto max-h-[85vh] mx-4"
                 >
                     <button
                         onClick={onClose}
-                        className="absolute top-4 right-4 p-2 text-gray-400 hover:text-white bg-white/5 rounded-full hover:bg-white/10 transition-colors z-10"
+                        className="absolute top-3 right-3 p-2 text-gray-400 hover:text-white bg-white/5 rounded-full hover:bg-white/10 transition-colors z-10"
                     >
                         <X size={20} />
                     </button>

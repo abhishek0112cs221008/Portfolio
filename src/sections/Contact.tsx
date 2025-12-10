@@ -29,30 +29,30 @@ const Contact = () => {
             color: "text-sky-400",
             bg: "bg-sky-400/10"
         },
-        {
-            icon: Github,
-            title: "GitHub",
-            value: "abhishek0112cs221008",
-            href: "https://github.com/abhishek0112cs221008",
-            color: "text-foreground",
-            bg: "bg-foreground/10"
-        },
-        {
-            icon: Phone,
-            title: "Phone",
-            value: "+91 8770321224",
-            href: "tel:+918770321224",
-            color: "text-green-500",
-            bg: "bg-green-500/10"
-        },
-        {
-            icon: MapPin,
-            title: "Location",
-            value: "India",
-            href: null,
-            color: "text-purple-500",
-            bg: "bg-purple-500/10"
-        }
+        // {
+        //     icon: Github,
+        //     title: "GitHub",
+        //     value: "abhishek0112cs221008",
+        //     href: "https://github.com/abhishek0112cs221008",
+        //     color: "text-foreground",
+        //     bg: "bg-foreground/10"
+        // },
+        // {
+        //     icon: Phone,
+        //     title: "Phone",
+        //     value: "+91 8770321224",
+        //     href: "tel:+918770321224",
+        //     color: "text-green-500",
+        //     bg: "bg-green-500/10"
+        // },
+        // {
+        //     icon: MapPin,
+        //     title: "Location",
+        //     value: "India",
+        //     href: null,
+        //     color: "text-purple-500",
+        //     bg: "bg-purple-500/10"
+        // }
     ];
 
     return (
@@ -66,7 +66,7 @@ const Contact = () => {
             >
                 <motion.div variants={fadeInUp} className="text-center mb-16">
                     <h2 className="text-4xl font-bold mb-4 text-foreground">
-                        <span className="text-primary">05.</span> Get In Touch
+                        <span className="text-primary">06.</span> Get In Touch
                     </h2>
                     <p className="text-muted-foreground max-w-xl mx-auto text-lg">
                         I'm currently looking for new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!

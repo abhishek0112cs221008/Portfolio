@@ -23,6 +23,24 @@ const Navbar = () => {
         { name: "Contact", href: "#contact" },
     ];
 
+    const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, href: string) => {
+        e.preventDefault();
+        setIsOpen(false);
+        const element = document.querySelector(href);
+        if (element) {
+            const offset = 80; // Height of navbar + some padding
+            const bodyRect = document.body.getBoundingClientRect().top;
+            const elementRect = element.getBoundingClientRect().top;
+            const elementPosition = elementRect - bodyRect;
+            const offsetPosition = elementPosition - offset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth"
+            });
+        }
+    };
+
     return (
         <nav
             className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? "bg-background/80 backdrop-blur-md border-b border-border" : "bg-transparent"
@@ -30,7 +48,7 @@ const Navbar = () => {
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
-                    <a href="#" className="flex items-center gap-2 text-xl font-bold text-foreground tracking-wider">
+                    <a href="#" className="flex items-center gap-2 text-xl font-bold text-foreground tracking-wider" onClick={(e) => handleScroll(e, '#')}>
                         <Code className="text-primary" />
                         <span>ABHISHEK</span>
                     </a>
@@ -42,6 +60,7 @@ const Navbar = () => {
                                 <a
                                     key={link.name}
                                     href={link.href}
+                                    onClick={(e) => handleScroll(e, link.href)}
                                     className="relative px-3 py-2 text-sm font-medium transition-colors group"
                                 >
                                     <span className="relative z-10 text-muted-foreground group-hover:text-primary transition-colors">
@@ -108,14 +127,14 @@ const Navbar = () => {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="md:hidden bg-background/95 backdrop-blur-xl border-b border-border overflow-hidden"
+                        className="md:hidden bg-background/95 backdrop-blur-xl border-b border-border overflow-hidden shadow-2xl"
                     >
                         <div className="px-4 pt-2 pb-6 space-y-2">
                             {navLinks.map((link) => (
                                 <a
                                     key={link.name}
                                     href={link.href}
-                                    onClick={() => setIsOpen(false)}
+                                    onClick={(e) => handleScroll(e, link.href)}
                                     className="block px-3 py-4 text-base font-medium text-foreground hover:text-primary hover:bg-secondary/5 rounded-lg text-center"
                                 >
                                     {link.name}
@@ -139,3 +158,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
