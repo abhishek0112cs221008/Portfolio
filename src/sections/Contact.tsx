@@ -1,5 +1,5 @@
 import Section from "../components/common/Section";
-import { Mail, MapPin, Phone, Linkedin, Twitter, Github } from "lucide-react";
+import { Mail, Linkedin, Twitter } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "../lib/motion";
 
