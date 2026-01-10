@@ -1,46 +1,57 @@
 import Section from "../components/common/Section";
 import { experience } from "../data/experience";
 import { motion } from "framer-motion";
+import { Briefcase, Calendar } from "lucide-react";
 
 const Experience = () => {
     return (
-        <Section id="experience">
-            <h2 className="text-4xl font-bold mb-16 text-center">
-                <span className="text-green-500">05.</span> Experience & Journey
-            </h2>
+        <Section id="experience" className="pt-20 pb-20">
+            <div className="max-w-4xl mx-auto px-4">
+                <div className="text-center mb-16">
+                    <h2 className="text-4xl font-bold tracking-tight mb-4">Journey</h2>
+                    <p className="text-lg text-muted-foreground">My professional timeline.</p>
+                </div>
 
-            <div className="relative max-w-3xl mx-auto">
-                {/* Vertical Line */}
-                <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-purple-500/50 to-transparent" />
+                <div className="relative">
+                    {/* Vertical Line */}
+                    <div className="absolute left-8 top-0 bottom-0 w-[2px] bg-border/50" />
 
-                <div className="space-y-12">
-                    {experience.map((item, index) => (
-                        <motion.div
-                            key={item.id}
-                            initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true, margin: "-100px" }}
-                            transition={{ duration: 0.6 }}
-                            className={`relative flex flex-col md:flex-row gap-8 ${index % 2 === 0 ? "md:flex-row-reverse" : ""
-                                }`}
-                        >
-                            {/* Dot */}
-                            <div className="absolute left-[11px] md:left-1/2 top-0 w-3 h-3 rounded-full bg-purple-500 md:-translate-x-[5px] shadow-[0_0_10px_#a855f7] z-10" />
+                    <div className="space-y-12">
+                        {experience.map((item, index) => (
+                            <motion.div
+                                key={item.id}
+                                initial={{ opacity: 0, x: -20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true, margin: "-100px" }}
+                                transition={{ duration: 0.5, delay: index * 0.1 }}
+                                className="relative pl-24 group"
+                            >
+                                {/* Timeline Node */}
+                                <div className="absolute left-[23px] top-1 w-5 h-5 rounded-full border-4 border-background bg-muted-foreground group-hover:bg-primary group-hover:scale-125 transition-all z-10" />
 
-                            <div className="flex-1 md:text-right hidden md:block" style={{ textAlign: index % 2 === 0 ? 'left' : 'right' } as any}>
-                                {/* Spacer for alignment on desktop */}
-                            </div>
+                                {/* Card Content */}
+                                <div className="relative bg-card/40 backdrop-blur-md border border-white/5 rounded-2xl p-6 hover:bg-card/60 transition-colors">
+                                    <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2">
+                                        <div>
+                                            <h3 className="text-xl font-bold text-foreground">{item.role}</h3>
+                                            <div className="flex items-center gap-2 text-primary font-medium mt-1">
+                                                <Briefcase size={16} />
+                                                <span>{item.company}</span>
+                                            </div>
+                                        </div>
+                                        <div className="flex items-center gap-2 text-sm text-muted-foreground bg-white/5 px-3 py-1 rounded-full w-fit">
+                                            <Calendar size={14} />
+                                            <span className="font-mono">{item.period}</span>
+                                        </div>
+                                    </div>
 
-                            <div className={`flex-1 pl-12 md:pl-0 ${index % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:pl-12 md:text-left'}`}>
-                                <span className="text-sm font-mono text-purple-400 mb-2 block">{item.period}</span>
-                                <h3 className="text-xl font-bold text-white content-start">{item.role}</h3>
-                                <p className="text-lg text-gray-400 mb-4">{item.company}</p>
-                                <p className="text-gray-500 text-sm leading-relaxed">
-                                    {item.description}
-                                </p>
-                            </div>
-                        </motion.div>
-                    ))}
+                                    <p className="text-muted-foreground leading-relaxed">
+                                        {item.description}
+                                    </p>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </Section>

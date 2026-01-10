@@ -5,60 +5,66 @@ import { fadeInUp } from "../lib/motion";
 
 const About = () => {
     return (
-        <Section id="about" className="relative">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
+        <Section id="about" className="pt-20">
+            <div className="max-w-4xl mx-auto px-4">
                 <motion.div
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: true }}
                     variants={fadeInUp}
-                    className="relative group"
+                    className="flex flex-col items-center text-center p-8 md:p-12 rounded-[2.5rem] bg-card/50 backdrop-blur-2xl border border-white/10 shadow-2xl relative overflow-hidden"
                 >
-                    {/* Image Frame Effect */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary to-secondary rounded-2xl blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-500" />
+                    {/* Background Glow */}
+                    <div className="absolute top-0 w-full h-full max-w-lg bg-gradient-to-b from-primary/10 to-transparent blur-3xl -z-10" />
 
-                    <div className="relative aspect-square rounded-2xl overflow-hidden border border-white/10 bg-card/50 backdrop-blur-sm">
-                        <img
-                            src={profileImg}
-                            alt="Abhishek Patel"
-                            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
-                        />
-
-                        {/* Corner Accents */}
-                        <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                        <div className="absolute bottom-0 left-0 w-20 h-20 bg-gradient-to-tr from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                    </div>
-                </motion.div>
-
-                <motion.div
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: true }}
-                    variants={fadeInUp}
-                >
-                    <h2 className="text-4xl font-bold mb-6 flex items-center gap-3 text-foreground">
-                        <span className="text-primary">01.</span> About Me
-                    </h2>
-                    <div className="space-y-4 text-muted-foreground leading-relaxed text-lg">
-                        <p>
-                            Hello! I'm Abhishek, a passionate developer based in India. I love bridging the gap between <span className="text-foreground font-medium">design</span> and <span className="text-foreground font-medium">engineering</span> to build robust and beautiful applications.
-                        </p>
-                        <p>
-                            Currently, I'm focused on mastering <strong className="text-primary">Data Structures & Algorithms</strong> and deepening my knowledge in the <strong className="text-primary">Spring Boot</strong> ecosystem. I enjoy solving complex problems and optimizing code for better performance.
-                        </p>
-                        <p>
-                            When I'm not coding, you can find me exploring new tech trends, participating in hackathons, or gaming.
-                        </p>
-                    </div>
-
-                    <div className="mt-8 flex gap-8">
-                        <div>
-                            <h4 className="text-3xl font-bold text-foreground mb-1">5+</h4>
-                            <p className="text-sm text-muted-foreground uppercase tracking-wider font-semibold">Projects Completed</p>
+                    {/* Profile Image */}
+                    <div className="relative mb-8 group">
+                        <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-white/10 shadow-xl relative z-10 p-1 bg-card">
+                            <img
+                                src={profileImg}
+                                alt="Abhishek Patel"
+                                className="w-full h-full object-cover rounded-full"
+                            />
                         </div>
-                        <div>
-                            <h4 className="text-3xl font-bold text-foreground mb-1">200+</h4>
-                            <p className="text-sm text-muted-foreground uppercase tracking-wider font-semibold">LeetCode Problems</p>
+                        <div className="absolute inset-0 bg-primary/20 rounded-full blur-2xl group-hover:blur-3xl transition-all opacity-50 z-0" />
+                    </div>
+
+                    {/* Content */}
+                    <h2 className="text-3xl md:text-4xl font-bold mb-4 tracking-tight">Abhishek Patel</h2>
+                    <p className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed mb-8">
+                        Bridging the gap between <span className="text-foreground font-semibold">design</span> and <span className="text-foreground font-semibold">engineering</span> to build robust applications.
+                    </p>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-2xl text-left">
+                        <div className="p-6 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors">
+                            <h3 className="text-lg font-semibold mb-2 flex items-center gap-2">
+                                <span className="w-2 h-2 rounded-full bg-blue-500" />
+                                Focus
+                            </h3>
+                            <p className="text-muted-foreground text-sm leading-relaxed">
+                                Mastering Data Structures & Algorithms and deepening knowledge in the Spring Boot ecosystem.
+                            </p>
+                        </div>
+                        <div className="p-6 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors">
+                            <h3 className="text-lg font-semibold mb-2 flex items-center gap-2">
+                                <span className="w-2 h-2 rounded-full bg-green-500" />
+                                Passion
+                            </h3>
+                            <p className="text-muted-foreground text-sm leading-relaxed">
+                                Exploring new tech trends, participating in hackathons, gaming, and solving complex problems.
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* Stats */}
+                    <div className="flex gap-12 mt-12 pt-8 border-t border-white/5 w-full justify-center">
+                        <div className="text-center">
+                            <div className="text-3xl font-bold tracking-tight">5+</div>
+                            <div className="text-xs text-muted-foreground uppercase tracking-wider font-semibold mt-1">Projects</div>
+                        </div>
+                        <div className="text-center">
+                            <div className="text-3xl font-bold tracking-tight">200+</div>
+                            <div className="text-xs text-muted-foreground uppercase tracking-wider font-semibold mt-1">LeetCode</div>
                         </div>
                     </div>
                 </motion.div>

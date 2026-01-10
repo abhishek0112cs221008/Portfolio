@@ -1,105 +1,130 @@
 import Section from "../components/common/Section";
-import { Mail, Linkedin, Twitter } from "lucide-react";
+import { Mail, Linkedin, Twitter, ArrowUpRight, Copy } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "../lib/motion";
+import { useState } from "react";
 
 const Contact = () => {
-    const contactMethods = [
-        {
-            icon: Mail,
-            title: "Email",
-            value: "0112cs221008@gmail.com",
-            href: "mailto:0112cs221008@gmail.com",
-            color: "text-red-500",
-            bg: "bg-red-500/10"
-        },
-        {
-            icon: Linkedin,
-            title: "LinkedIn",
-            value: "abhishek68",
-            href: "https://www.linkedin.com/in/abhishek68/",
-            color: "text-blue-600",
-            bg: "bg-blue-600/10"
-        },
-        {
-            icon: Twitter,
-            title: "X (Twitter)",
-            value: "@abhi20patel",
-            href: "https://x.com/abhi20patel",
-            color: "text-sky-400",
-            bg: "bg-sky-400/10"
-        },
-        // {
-        //     icon: Github,
-        //     title: "GitHub",
-        //     value: "abhishek0112cs221008",
-        //     href: "https://github.com/abhishek0112cs221008",
-        //     color: "text-foreground",
-        //     bg: "bg-foreground/10"
-        // },
-        // {
-        //     icon: Phone,
-        //     title: "Phone",
-        //     value: "+91 8770321224",
-        //     href: "tel:+918770321224",
-        //     color: "text-green-500",
-        //     bg: "bg-green-500/10"
-        // },
-        // {
-        //     icon: MapPin,
-        //     title: "Location",
-        //     value: "India",
-        //     href: null,
-        //     color: "text-purple-500",
-        //     bg: "bg-purple-500/10"
-        // }
-    ];
+    const [copied, setCopied] = useState(false);
+
+    const copyEmail = () => {
+        navigator.clipboard.writeText("0112cs221008@gmail.com");
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+    };
 
     return (
-        <Section id="contact" className="mb-20">
+        <Section id="contact" className="mb-20 pt-20">
             <motion.div
                 variants={staggerContainer()}
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true, margin: "-100px" }}
-                className="max-w-6xl mx-auto"
+                className="max-w-5xl mx-auto px-4"
             >
                 <motion.div variants={fadeInUp} className="text-center mb-16">
-                    <h2 className="text-4xl font-bold mb-4 text-foreground">
-                        <span className="text-primary">06.</span> Get In Touch
+                    <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
+                        Let's work together.
                     </h2>
-                    <p className="text-muted-foreground max-w-xl mx-auto text-lg">
-                        I'm currently looking for new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!
+                    <p className="text-xl text-muted-foreground max-w-2xl mx-auto font-medium">
+                        I'm always open to discussing product design work or partnership opportunities.
                     </p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {contactMethods.map((method) => (
-                        <motion.a
-                            key={method.title}
-                            href={method.href || undefined}
-                            variants={fadeInUp}
-                            whileHover={{ y: -5 }}
-                            className={`group flex flex-col items-center p-6 bg-card border border-border rounded-2xl hover:border-primary/50 hover:shadow-lg transition-all ${!method.href ? 'cursor-default' : ''}`}
-                        >
-                            <div className={`p-4 rounded-full mb-4 group-hover:scale-110 transition-transform ${method.bg} ${method.color}`}>
-                                <method.icon size={32} />
+                {/* Bento Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    {/* Email Card - Large */}
+                    <motion.div
+                        variants={fadeInUp}
+                        className="md:col-span-2 relative group overflow-hidden bg-card/50 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:bg-card/80 transition-all duration-500"
+                    >
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-primary/20 transition-all duration-500" />
+
+                        <div className="relative z-10 flex flex-col justify-between h-full min-h-[200px]">
+                            <div className="flex justify-between items-start">
+                                <div className="p-3 bg-white/5 border border-white/5 rounded-2xl w-fit">
+                                    <Mail size={32} className="text-primary" />
+                                </div>
+                                <button
+                                    onClick={copyEmail}
+                                    className="p-2 text-muted-foreground hover:text-foreground transition-colors"
+                                    title="Copy Email"
+                                >
+                                    {copied ? <span className="text-xs text-green-400 font-mono">Copied!</span> : <Copy size={20} />}
+                                </button>
                             </div>
-                            <h3 className="text-lg font-bold text-foreground mb-1">{method.title}</h3>
-                            <p className="text-muted-foreground text-sm font-medium">{method.value}</p>
-                        </motion.a>
-                    ))}
+
+                            <div>
+                                <h3 className="text-2xl font-semibold mb-2">Email Me</h3>
+                                <a
+                                    href="mailto:0112cs221008@gmail.com"
+                                    className="text-lg text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2"
+                                >
+                                    0112cs221008@gmail.com
+                                    <ArrowUpRight size={16} />
+                                </a>
+                            </div>
+                        </div>
+                    </motion.div>
+
+                    {/* LinkedIn Card */}
+                    <motion.a
+                        href="https://www.linkedin.com/in/abhishek68/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        variants={fadeInUp}
+                        className="md:col-span-1 relative group overflow-hidden bg-[#0077b5]/10 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:bg-[#0077b5]/20 transition-all duration-500 flex flex-col justify-between min-h-[200px]"
+                    >
+                        <div className="flex justify-between items-start">
+                            <div className="p-3 bg-white/5 border border-white/5 rounded-2xl w-fit">
+                                <Linkedin size={32} className="text-[#0077b5]" />
+                            </div>
+                            <ArrowUpRight size={20} className="text-muted-foreground group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                        </div>
+                        <div>
+                            <h3 className="text-xl font-semibold">LinkedIn</h3>
+                            <p className="text-sm text-muted-foreground">Connect personally</p>
+                        </div>
+                    </motion.a>
+
+                    {/* Twitter Card */}
+                    <motion.a
+                        href="https://x.com/abhi20patel"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        variants={fadeInUp}
+                        className="md:col-span-1 relative group overflow-hidden bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:bg-white/10 transition-all duration-500 flex flex-col justify-between min-h-[200px]"
+                    >
+                        <div className="flex justify-between items-start">
+                            <div className="p-3 bg-white/5 border border-white/5 rounded-2xl w-fit">
+                                <Twitter size={32} className="text-foreground" />
+                            </div>
+                            <ArrowUpRight size={20} className="text-muted-foreground group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                        </div>
+                        <div>
+                            <h3 className="text-xl font-semibold">X (Twitter)</h3>
+                            <p className="text-sm text-muted-foreground">Follow updates</p>
+                        </div>
+                    </motion.a>
+
+                    {/* Location Card */}
+                    <motion.div
+                        variants={fadeInUp}
+                        className="md:col-span-2 relative group overflow-hidden bg-card/50 backdrop-blur-xl border border-white/10 rounded-3xl p-8 flex flex-col justify-center items-center text-center"
+                    >
+                        <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        <p className="text-2xl font-serif italic text-muted-foreground">
+                            "Simplicity is the ultimate sophistication."
+                        </p>
+                        <p className="mt-4 text-sm font-bold text-foreground uppercase tracking-widest opacity-50"> Leonardo da Vinci</p>
+                    </motion.div>
                 </div>
 
-                <motion.div
-                    variants={fadeInUp}
-                    className="mt-16 p-8 rounded-2xl bg-secondary/5 border border-border text-center"
-                >
-                    <p className="text-xl text-muted-foreground italic mb-4">
-                        "The only way to do great work is to love what you do."
+                <div className="mt-16 text-center">
+                    <p className="text-sm text-muted-foreground">
+                        &copy; {new Date().getFullYear()} Abhishek Patel. Built with <span className="text-primary">React</span> & <span className="text-primary">Vite</span>.
                     </p>
-                    <div className="text-foreground font-bold">- Steve Jobs</div>
-                </motion.div>
+                </div>
             </motion.div>
         </Section>
     );
