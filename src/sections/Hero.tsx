@@ -1,11 +1,9 @@
 import { motion } from "framer-motion";
-import { Download, ArrowRight, Code, Terminal, Cpu, ChevronRight } from "lucide-react";
+import { Download, ArrowRight, ChevronRight } from "lucide-react";
 import {
     staggerContainer,
     fadeInUp,
-    fadeInRight,
-    hoverScale,
-    tapScale
+    fadeInRight
 } from "../lib/motion";
 import resumePdf from "../assets/abhishek.pdf";
 
