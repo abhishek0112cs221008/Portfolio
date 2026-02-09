@@ -6,13 +6,13 @@ function App() {
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
       {/* Wikipedia-style layout */}
-      <div className="max-w-4xl mx-auto px-4 py-8">
+      <div className="max-w-4xl mx-auto px-6 md:px-8 py-12">
         {/* Header */}
         <header className="border-b-2 border-border pb-6 mb-8 relative">
           <div className="absolute top-0 right-0">
             <ThemeSwitcher />
           </div>
-          <h1 className="text-5xl font-serif mb-2 text-foreground">Abhishek Patel</h1>
+          <h1 className="text-4xl md:text-6xl font-serif mb-4 text-foreground tracking-tight">Abhishek Patel</h1>
 
           <p className="text-lg text-muted-foreground italic mb-3">Software Engineering Undergraduate</p>
           <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
@@ -36,7 +36,7 @@ function App() {
           <h2 className="text-3xl font-serif border-b-2 border-border pb-2 mb-4 text-foreground">
             Career Objective
           </h2>
-          <div className="text-muted-foreground leading-relaxed text-lg mb-4">
+          <div className="text-muted-foreground leading-relaxed text-lg md:text-xl mb-6">
             <p>
               Motivated and detail-oriented <strong className="text-foreground">Software Engineering undergraduate</strong> (B.Tech CSE, 2026) with strong foundations in <strong className="text-foreground">Java, SQL, and Data Structures & Algorithms</strong>. Seeking an opportunity to build scalable, high-performance backend systems and contribute to real-world engineering challenges.
             </p>
@@ -65,7 +65,7 @@ function App() {
 
           <div className="space-y-6">
             {/* B.Tech Card */}
-            <div className="border-2 border-blue-200 p-6 rounded-lg bg-card shadow-sm hover:shadow-md transition-shadow">
+            <div className="border-2 border-blue-200 p-6 rounded-lg bg-card shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
               <div className="flex items-start gap-4">
                 <div className="flex-shrink-0 w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">
                   🎓
@@ -105,7 +105,7 @@ function App() {
             </div>
 
             {/* XII Card */}
-            <div className="border-2 border-green-200 p-6 rounded-lg bg-card shadow-sm hover:shadow-md transition-shadow">
+            <div className="border-2 border-green-200 p-6 rounded-lg bg-card shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
               <div className="flex items-start gap-4">
                 <div className="flex-shrink-0 w-16 h-16 bg-green-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">
                   📚
@@ -143,7 +143,7 @@ function App() {
             </div>
 
             {/* X Card */}
-            <div className="border-2 border-purple-200 p-6 rounded-lg bg-card shadow-sm hover:shadow-md transition-shadow">
+            <div className="border-2 border-purple-200 p-6 rounded-lg bg-card shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
               <div className="flex items-start gap-4">
                 <div className="flex-shrink-0 w-16 h-16 bg-purple-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">
                   📖
@@ -327,7 +327,7 @@ function App() {
           </h2>
           <div className="space-y-6">
             {/* Prime Project */}
-            <div className="border-2 border-border p-6 rounded-lg bg-card shadow-sm hover:shadow-md transition-shadow">
+            <div className="border-2 border-border p-6 rounded-lg bg-card shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
               <div className="flex justify-between items-start mb-3">
                 <div>
                   <h3 className="text-2xl font-bold text-foreground mb-1">Prime Project – E-Commerce Platform</h3>
@@ -389,7 +389,7 @@ function App() {
             </div>
 
             {/* Expense Tracker */}
-            <div className="border-2 border-border p-6 rounded-lg bg-card shadow-sm hover:shadow-md transition-shadow">
+            <div className="border-2 border-border p-6 rounded-lg bg-card shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
               <div className="flex justify-between items-start mb-3">
                 <div>
                   <h3 className="text-2xl font-bold text-foreground mb-1">Expense Tracker App</h3>
@@ -457,7 +457,7 @@ function App() {
 
           <div className="grid md:grid-cols-2 gap-6">
             {/* LeetCode Achievement */}
-            <div className="border-2 border-yellow-200 p-5 rounded-lg bg-card shadow-sm hover:shadow-md transition-shadow">
+            <div className="border-2 border-yellow-200 p-5 rounded-lg bg-card shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
               <div className="flex items-start gap-3 mb-3">
                 <Award className="text-yellow-600 mt-1 flex-shrink-0" size={28} />
                 <div className="flex-1">
@@ -495,7 +495,7 @@ function App() {
             </div>
 
             {/* HackerRank Certifications */}
-            <div className="border-2 border-blue-200 p-5 rounded-lg bg-card shadow-sm hover:shadow-md transition-shadow">
+            <div className="border-2 border-blue-200 p-5 rounded-lg bg-card shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
               <div className="flex items-start gap-3 mb-3">
                 <Star className="text-blue-600 mt-1 flex-shrink-0" size={28} />
                 <div className="flex-1">
@@ -534,7 +534,7 @@ function App() {
             </div>
 
             {/* CoCubes Assessment */}
-            <div className="border-2 border-green-200 p-5 rounded-lg bg-card shadow-sm hover:shadow-md transition-shadow md:col-span-2">
+            <div className="border-2 border-green-200 p-5 rounded-lg bg-card shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 md:col-span-2">
               <div className="flex items-start gap-3 mb-3">
                 <Target className="text-green-600 mt-1 flex-shrink-0" size={28} />
                 <div className="flex-1">
@@ -589,7 +589,7 @@ function App() {
 
           <div className="grid md:grid-cols-2 gap-6">
             {/* Contact Information Card */}
-            <div className="border-2 border-blue-200 p-6 rounded-lg bg-card shadow-sm hover:shadow-md transition-shadow">
+            <div className="border-2 border-blue-200 p-6 rounded-lg bg-card shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
               <h3 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2">
                 <Mail className="text-blue-600" size={24} />
                 Get In Touch
@@ -618,7 +618,7 @@ function App() {
             </div>
 
             {/* Social Links Card */}
-            <div className="border-2 border-purple-200 p-6 rounded-lg bg-card shadow-sm hover:shadow-md transition-shadow">
+            <div className="border-2 border-purple-200 p-6 rounded-lg bg-card shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
               <h3 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2">
                 <Github className="text-purple-600" size={24} />
                 Connect With Me
