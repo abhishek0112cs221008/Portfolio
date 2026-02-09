@@ -1,60 +1,56 @@
-import Section from "../components/common/Section";
-import { experience } from "../data/experience";
-import { motion } from "framer-motion";
-import { Briefcase, Calendar } from "lucide-react";
-
 const Experience = () => {
+    const experiences = [
+        {
+            role: "Full Stack Developer",
+            company: "Tech Company",
+            period: "2023 - Present",
+            description: "Modern web applications develop karta hoon using React aur Node.js. Team ke saath collaborate karke scalable solutions deliver karta hoon.",
+            responsibilities: [
+                "Frontend aur backend features develop karna",
+                "Code reviews conduct karna",
+                "Technical documentation likhna",
+                "Junior developers ko mentor karna"
+            ]
+        },
+        {
+            role: "Frontend Developer Intern",
+            company: "Startup XYZ",
+            period: "2022 - 2023",
+            description: "React-based applications par kaam kiya aur modern web development practices seekhe.",
+            responsibilities: [
+                "UI components banana",
+                "API integration karna",
+                "Bug fixes aur testing",
+                "Team meetings mein participate karna"
+            ]
+        }
+    ];
+
     return (
-        <Section id="experience" className="pt-20 pb-20">
-            <div className="max-w-4xl mx-auto px-4">
-                <div className="text-center mb-16">
-                    <h2 className="text-4xl font-bold tracking-tight mb-4">Journey</h2>
-                    <p className="text-lg text-muted-foreground">My professional timeline.</p>
-                </div>
+        <section className="border-b border-gray-300 pb-6 mb-6">
+            <h2 className="text-3xl font-serif border-b-2 border-gray-300 pb-2 mb-4">
+                Work Experience (Kaam Ka Experience)
+            </h2>
 
-                <div className="relative">
-                    {/* Vertical Line */}
-                    <div className="absolute left-8 top-0 bottom-0 w-[2px] bg-border/50" />
+            <div className="space-y-6">
+                {experiences.map((exp, index) => (
+                    <div key={index} className="border-l-4 border-blue-500 pl-4">
+                        <h3 className="text-xl font-semibold">{exp.role}</h3>
+                        <p className="text-gray-600 mb-2">
+                            <strong>{exp.company}</strong> • {exp.period}
+                        </p>
+                        <p className="text-justify mb-3">{exp.description}</p>
 
-                    <div className="space-y-12">
-                        {experience.map((item, index) => (
-                            <motion.div
-                                key={item.id}
-                                initial={{ opacity: 0, x: -20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true, margin: "-100px" }}
-                                transition={{ duration: 0.5, delay: index * 0.1 }}
-                                className="relative pl-24 group"
-                            >
-                                {/* Timeline Node */}
-                                <div className="absolute left-[23px] top-1 w-5 h-5 rounded-full border-4 border-background bg-muted-foreground group-hover:bg-primary group-hover:scale-125 transition-all z-10" />
-
-                                {/* Card Content */}
-                                <div className="relative bg-card/40 backdrop-blur-md border border-white/5 rounded-2xl p-6 hover:bg-card/60 transition-colors">
-                                    <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2">
-                                        <div>
-                                            <h3 className="text-xl font-bold text-foreground">{item.role}</h3>
-                                            <div className="flex items-center gap-2 text-primary font-medium mt-1">
-                                                <Briefcase size={16} />
-                                                <span>{item.company}</span>
-                                            </div>
-                                        </div>
-                                        <div className="flex items-center gap-2 text-sm text-muted-foreground bg-white/5 px-3 py-1 rounded-full w-fit">
-                                            <Calendar size={14} />
-                                            <span className="font-mono">{item.period}</span>
-                                        </div>
-                                    </div>
-
-                                    <p className="text-muted-foreground leading-relaxed">
-                                        {item.description}
-                                    </p>
-                                </div>
-                            </motion.div>
-                        ))}
+                        <h4 className="font-semibold mb-2">Responsibilities:</h4>
+                        <ul className="list-disc ml-6 space-y-1">
+                            {exp.responsibilities.map((resp, respIndex) => (
+                                <li key={respIndex}>{resp}</li>
+                            ))}
+                        </ul>
                     </div>
-                </div>
+                ))}
             </div>
-        </Section>
+        </section>
     );
 };
 
