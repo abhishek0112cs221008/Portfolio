@@ -15,16 +15,15 @@
   --color-border: var(--border);
   --color-muted-foreground: var(--muted-foreground);
 
-  /* Modern Selection */
-  ::selection {
-    background-color: var(--primary);
-    color: var(--primary-foreground);
-  }
-
-
   --animate-blob: blob 7s infinite;
   --animate-fade-in: fade-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  --animate-float: float 6s ease-in-out infinite;
+  /* Modern Selection is moved outside @theme */
+}
+
+/* Modern Selection */
+::selection {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
 }
 
 /* ==== THEME VARIABLES ==== */
