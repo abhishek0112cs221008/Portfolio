@@ -1,125 +1,199 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap');
-
 @import "tailwindcss";
 
+/* ─── Claude AI Color Palette ─── */
 :root {
-  --bg-magazine: #d2d9d9;
-  --accent-red: #ff3d00;
-  --text-main: #000000;
-  --font-serif: "Syne", sans-serif;
-  --font-sans: "Inter", sans-serif;
+  --cream: #FAF7F2;
+  --cream-dark: #F0EBE1;
+  --sand: #E8E0D4;
+  /* --terracotta: #D97757;
+  --terracotta-dk: #F2BFA4; */
+  --terracotta: #D97757;
+  --terracotta-dk: #C0623E;
+  --charcoal: #1A1908;
+  --muted: #7A7060;
+  --border: #D9D0C2;
+
+  --font-serif: "Instrument Serif", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
 }
 
+/* ─── Base ─── */
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--bg-magazine);
-  color: var(--text-main);
+  background-color: var(--cream);
+  color: var(--charcoal);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
-.font-serif {
-  font-family: var(--font-serif);
-}
-
-.font-sans {
-  font-family: var(--font-sans);
-}
-
-/* Magazine Utilities */
-.magazine-border {
-  @apply border border-black/80;
-}
-
-.magazine-header {
-  font-family: var(--font-serif);
-  @apply font-black tracking-tighter uppercase leading-none;
-}
-
-.sticker {
-  @apply relative inline-block transform -rotate-12 bg-white/40 backdrop-blur-sm border border-white/60 rounded-full px-4 py-1 shadow-lg z-10;
-}
-
-.text-stroke {
-  -webkit-text-stroke: 1px black;
-  color: transparent;
-}
-
-.magazine-grid {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 1rem;
-}
-
-/* Grain Overlay */
-.grain-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0.05;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-}
-
-/* Custom Scrollbar */
+/* ─── Scrollbar ─── */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: var(--cream-dark);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--accent-red);
+  background: var(--terracotta);
+  border-radius: 99px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #d63000;
+  background: var(--terracotta-dk);
 }
 
-/* Hover Underline Animation */
-.hover-underline-animation {
-  display: inline-block;
-  position: relative;
+/* ─── Selection ─── */
+::selection {
+  background: var(--terracotta);
+  color: var(--cream);
 }
 
-.hover-underline-animation::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  transform: scaleX(0);
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  background-color: var(--accent-red);
-  transform-origin: bottom right;
-  transition: transform 0.25s ease-out;
+/* ─── Subtle paper noise ─── */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-.hover-underline-animation:hover::after {
-  transform: scaleX(1);
-  transform-origin: bottom left;
+/* ─── Typography helpers ─── */
+.serif {
+  font-family: var(--font-serif);
 }
 
-/* Marquee Animation */
+.serif-italic {
+  font-family: var(--font-serif);
+  font-style: italic;
+}
+
+/* ─── Marquee ─── */
 @keyframes marquee {
-  0% {
-    transform: translateX(0%);
+  from {
+    transform: translateX(0);
   }
 
-  100% {
+  to {
     transform: translateX(-50%);
   }
 }
 
 .animate-marquee {
-  animation: marquee 20s linear infinite;
+  animation: marquee 28s linear infinite;
+}
+
+/* ─── Hover underline ─── */
+.link-underline {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.link-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* ─── Float animations ─── */
+@keyframes float-slow {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(-6deg);
+  }
+
+  50% {
+    transform: translateY(-10px) rotate(-6deg);
+  }
+}
+
+@keyframes float-delayed {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(3deg);
+  }
+
+  50% {
+    transform: translateY(-8px) rotate(3deg);
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 5s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-delayed 4s ease-in-out infinite 1s;
+}
+
+/* ─── Spin ─── */
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+  display: inline-block;
+}
+
+/* ─── Project card hover ─── */
+.project-card {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(26, 25, 8, 0.12);
+}
+
+/* ─── Pill tag ─── */
+.pill {
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: 99px;
+  border: 1px solid var(--border);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.pill:hover {
+  border-color: var(--terracotta);
+  color: var(--terracotta);
+  background: rgba(217, 119, 87, 0.07);
+}
+
+/* ─── Stat bar ─── */
+.stat-bar-fill {
+  height: 3px;
+  border-radius: 99px;
+  background: var(--terracotta);
+  transition: width 1s ease;
 }
