@@ -24,7 +24,7 @@ const SELECTED_REPOS = [
   'prime-project',
   'Finance-Tracker',
   'SIT',
-  'Shabd',
+  'VOYA',
   'TIC-_TAC-_TOE',
   'Shulte-Game',
 ];
@@ -45,9 +45,10 @@ const REPO_META: Record<string, { label: string; desc: string; live?: string }> 
     desc: 'Built my own Git-like VCS from scratch in Java — supports commit, log, diff, branching, and a clean CLI with docs.',
     live: 'https://abhishek0112cs221008.github.io/SIT/',
   },
-  'Shabd': {
-    label: 'Mobile App · Flutter',
-    desc: 'Word of the Day app with 365 curated vocabulary entries, daily notifications, minimalist UI, and offline-first architecture.',
+  'VOYA': {
+    label: 'Web Platform',
+    desc: 'VOYA is a complete, database-driven e-commerce website built from the ground up using Java Servlets, JSP, and MySQL. It simulates a real-world online store for a luxury handbag brand, featuring a full suite of functionalities for both customers and administrators.',
+    // live: 'https://abhishek0112cs221008.github.io/VOYA/',
   },
   'TIC-_TAC-_TOE': {
     label: 'Game · Flutter',
@@ -70,11 +71,18 @@ const SKILLS = [
   {
     category: 'Languages',
     items: [
-      { name: 'Java', icon: <SiOpenjdk className="text-[#ED8B00]" /> },
+      {
+        name: 'Java',
+        icon: (
+          <img
+            src="https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg"
+            alt="Java logo"
+            className="w-6 h-6"
+          />
+        ),
+      },
       { name: 'Dart', icon: <SiDart className="text-[#00B4AB]" /> },
       { name: 'JavaScript', icon: <SiJavascript className="text-[#F7DF1E]" /> },
-      { name: 'TypeScript', icon: <SiTypescript className="text-[#3178C6]" /> },
-      { name: 'Python', icon: <SiPython className="text-[#3776AB]" /> },
       { name: 'C++', icon: <SiCplusplus className="text-[#00599C]" /> },
     ],
   },
@@ -82,11 +90,9 @@ const SKILLS = [
     category: 'Frameworks & Libraries',
     items: [
       { name: 'Spring Boot', icon: <SiSpringboot className="text-[#6DB33F]" /> },
-      { name: 'React', icon: <SiReact className="text-[#61DAFB]" /> },
       { name: 'Flutter', icon: <SiFlutter className="text-[#02569B]" /> },
       { name: 'Hibernate', icon: <SiHibernate className="text-[#59666C]" /> },
       { name: 'REST APIs', icon: <FaCode className="text-[#D97757]" /> },
-      { name: 'JUnit', icon: <FaJava className="text-[#ED8B00]" /> },
     ],
   },
   {
