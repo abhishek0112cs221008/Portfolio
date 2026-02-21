@@ -4,11 +4,11 @@ import {
   Star, GitFork, ExternalLink, Download, Code2, BookOpen
 } from 'lucide-react';
 import {
-  SiSpringboot, SiReact, SiFlutter, SiDart, SiJavascript, SiTypescript,
-  SiMysql, SiPostman, SiPython, SiCplusplus,
-  SiIntellijidea, SiAndroidstudio, SiGit, SiHibernate, SiOpenjdk
+  SiSpringboot, SiFlutter, SiDart, SiJavascript,
+  SiMysql, SiPostman, SiCplusplus,
+  SiIntellijidea, SiAndroidstudio, SiGit, SiHibernate
 } from 'react-icons/si';
-import { FaGraduationCap, FaBook, FaCode, FaJava, FaTrophy } from 'react-icons/fa';
+import { FaGraduationCap, FaBook, FaCode, FaTrophy } from 'react-icons/fa';
 import { VscCode } from 'react-icons/vsc';
 import profileImage from './assets/profile.png';
 
