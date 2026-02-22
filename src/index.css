@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* ─── Claude AI Color Palette ─── */
-/* :root {
+:root {
   --cream: #FAF7F2;
   --cream-dark: #F0EBE1;
   --sand: #E8E0D4;
@@ -13,9 +13,9 @@
 
   --font-serif: "Instrument Serif", Georgia, serif;
   --font-sans: "Inter", system-ui, sans-serif;
-} */
+}
 
-:root {
+/* :root {
   --cream: #FFF1F2;
   --cream-dark: #FFE4E6;
   --sand: #FECDD3;
@@ -26,7 +26,7 @@
   --border: #FDA4AF;
   --font-serif: "Instrument Serif", Georgia, serif;
   --font-sans: "Inter", system-ui, sans-serif;
-}
+} */
 
 /* ─── Base ─── */
 html {
