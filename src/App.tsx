@@ -1,14 +1,14 @@
 import { useState, useEffect, useRef } from 'react';
 import {
   Github, Linkedin, Mail, Copy, Check, ArrowUpRight,
-  Star, GitFork, ExternalLink, Download, Code2, BookOpen
+  Star, GitFork, Download, Code2, Moon, Sun
 } from 'lucide-react';
 import {
   SiSpringboot, SiFlutter, SiDart, SiJavascript,
   SiMysql, SiPostman, SiCplusplus,
   SiIntellijidea, SiAndroidstudio, SiGit, SiHibernate
 } from 'react-icons/si';
-import { FaGraduationCap, FaBook, FaCode, FaTrophy } from 'react-icons/fa';
+import { FaGraduationCap, FaBook, FaCode } from 'react-icons/fa';
 import { VscCode } from 'react-icons/vsc';
 // Image removed as requested
 
@@ -92,7 +92,7 @@ const SKILLS = [
       { name: 'Spring Boot', icon: <SiSpringboot className="text-[#6DB33F]" /> },
       { name: 'Flutter', icon: <SiFlutter className="text-[#02569B]" /> },
       { name: 'Hibernate', icon: <SiHibernate className="text-[#59666C]" /> },
-      { name: 'REST APIs', icon: <FaCode className="text-[var(--terracotta)]" /> },
+      { name: 'REST APIs', icon: <FaCode className="text-[#FFC839]" /> },
     ],
   },
   {
@@ -115,7 +115,7 @@ const EDUCATION = [
     school: 'Bansal Institute of Science & Technology, Bhopal',
     year: '2022 – 2026',
     score: 'CGPA: 8.45',
-    icon: <FaGraduationCap className="text-[var(--terracotta)]" />,
+    icon: <FaGraduationCap className="text-[#FFC839]" />,
   },
   {
     degree: 'XII (MP Board)',
@@ -191,6 +191,7 @@ function App() {
   const [activeSection, setActiveSection] = useState('');
   const [copied, setCopied] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
   const [repos, setRepos] = useState<GHRepo[]>([]);
   const [reposLoading, setReposLoading] = useState(true);
   const [lcStats, setLcStats] = useState<LCStats | null>(null);
@@ -314,42 +315,42 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: 'var(--cream)', color: 'var(--charcoal)' }} id="home">
+    <div className="min-h-screen transition-colors duration-300" style={{ backgroundColor: darkMode ? '#0F1419' : '#FFFFFF', color: darkMode ? '#FFFFFF' : '#1E1B22' }} id="home">
       <div className="grain-overlay" />
 
       {/* ── Mobile Menu ───────────────────────────────────────────────── */}
       <div
-        className="fixed inset-0 z-50 flex flex-col p-8"
+        className="fixed inset-0 z-50 flex flex-col p-8 transition-colors duration-300\"
         style={{
-          backgroundColor: 'var(--charcoal)', color: 'var(--cream)',
+          backgroundColor: darkMode ? '#000000' : '#1E1B22', color: '#FFFFFF',
           transform: menuOpen ? 'translateX(0)' : 'translateX(100%)',
           transition: 'transform 0.45s cubic-bezier(0.77,0,0.18,1)',
         }}
       >
         <div className="flex justify-end mb-16">
           <button onClick={() => setMenuOpen(false)}
-            style={{ color: 'var(--cream)' }}
-            className="text-sm font-semibold tracking-widest uppercase opacity-60 hover:opacity-100 transition-opacity">
+            style={{ color: '#FFC839' }}
+            className="text-sm font-semibold tracking-widest uppercase opacity-90 hover:opacity-100 transition-opacity">
             Close ✕
           </button>
         </div>
         <nav className="flex flex-col gap-8">
           {NAV_LINKS.map(link => (
             <a key={link} href={`#${link.toLowerCase()}`} onClick={() => setMenuOpen(false)}
-              className="serif-italic text-5xl hover:text-[var(--terracotta)] transition-colors"
-              style={{ color: 'var(--cream)' }}>
+              className="text-4xl font-bold hover:text-[#FFC839] transition-colors"
+              style={{ color: '#FFFFFF' }}>
               {link}
             </a>
           ))}
         </nav>
-        <div className="mt-auto flex gap-6">
+        <div className="mt-auto flex gap-4">
           {[
-            { href: 'https://github.com/abhishek0112cs221008', icon: <Github size={22} /> },
-            { href: 'https://linkedin.com/in/abhishek68', icon: <Linkedin size={22} /> },
-            { href: 'mailto:0112cs221008@gmail.com', icon: <Mail size={22} /> },
+            { href: 'https://github.com/abhishek0112cs221008', icon: <Github size={24} /> },
+            { href: 'https://linkedin.com/in/abhishek68', icon: <Linkedin size={24} /> },
+            { href: 'mailto:0112cs221008@gmail.com', icon: <Mail size={24} /> },
           ].map((s, i) => (
             <a key={i} href={s.href} target={s.href.startsWith('mailto') ? undefined : '_blank'} rel="noreferrer"
-              style={{ color: 'var(--cream)' }} className="opacity-50 hover:opacity-100 transition-opacity">
+              style={{ color: '#FFC839' }} className="hover:opacity-80 transition-opacity">
               {s.icon}
             </a>
           ))}
@@ -357,200 +358,168 @@ function App() {
       </div>
 
       {/* ── Navbar ────────────────────────────────────────────────────── */}
-      <header className="sticky top-0 z-40 px-6 md:px-12 py-5 flex items-center justify-between backdrop-blur-xl"
-        style={{ borderBottom: '1px solid var(--border)', backgroundColor: 'rgba(250, 244, 241, 0.55)' }}>
-        <a href="#home" className="serif text-2xl tracking-tighter group" style={{ color: 'var(--charcoal)' }}>
-          Abhishek<span className="inline-block transition-transform group-hover:rotate-12" style={{ color: 'var(--accent-orange)' }}>.</span>
+      <header className="sticky top-0 z-40 px-6 md:px-12 py-6 flex items-center justify-between backdrop-blur-xl border-b-4 transition-colors duration-300" 
+        style={{ borderBottomColor: '#FFC839', backgroundColor: darkMode ? 'rgba(15, 20, 25, 0.98)' : 'rgba(255, 255, 255, 0.98)' }}>
+        <a href="#home" className="text-3xl font-bold tracking-tight group" style={{ color: darkMode ? '#FFC839' : '#1E1B22' }}>
+          Abhishek<span className="inline-block transition-transform group-hover:scale-125" style={{ color: '#FFC839' }}>.</span>
         </a>
 
-        <nav className="hidden md:flex items-center gap-10">
+        <nav className="hidden md:flex items-center gap-12">
           {NAV_LINKS.map(link => {
             const isActive = activeSection === link.toLowerCase();
             return (
               <a
                 key={link}
                 href={`#${link.toLowerCase()}`}
-                className="relative text-[10px] font-bold uppercase tracking-[0.3em] transition-all hover:opacity-100"
-                style={{ color: isActive ? 'var(--charcoal)' : 'var(--muted)', opacity: isActive ? 1 : 0.5 }}
+                className="relative text-xs font-bold uppercase tracking-widest transition-all"
+                style={{ color: isActive ? '#FFC839' : darkMode ? '#999999' : '#5A5763' }}
               >
                 {link}
                 {isActive && (
-                  <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full"
-                    style={{ backgroundColor: 'var(--charcoal)' }} />
+                  <span className="absolute -bottom-3 left-0 w-full h-1 rounded-full"
+                    style={{ backgroundColor: '#FFC839' }} />
                 )}
               </a>
             );
           })}
         </nav>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
+          <button onClick={() => setDarkMode(!darkMode)} className="p-2 rounded-lg transition-all hidden md:flex" style={{ backgroundColor: darkMode ? '#1E1B22' : '#F0F0F0', color: darkMode ? '#FFC839' : '#1E1B22', border: '2px solid #FFC839' }}>
+            {darkMode ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
           <a
             href="https://drive.google.com/file/d/YOUR_RESUME_ID/view"
             target="_blank" rel="noreferrer"
-            className="hidden md:inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest px-5 py-2.5 rounded-full transition-all hover:bg-[var(--cream-dark)]"
-            style={{ border: '1px solid var(--border)', color: 'var(--charcoal)' }}
+            className="hidden md:inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-6 py-3 rounded-lg transition-all hover:shadow-md"
+            style={{ border: '2px solid #FFC839', color: '#1E1B22', backgroundColor: '#FFFFFF' }}
           >
-            <Download size={12} /> Resume
+            <Download size={14} /> Resume
           </a>
           <a href="mailto:0112cs221008@gmail.com"
-            className="hidden md:inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest px-6 py-2.5 rounded-full shadow-sm transition-all hover:translate-y-[-1px] hover:shadow-md active:scale-95"
-            style={{ backgroundColor: 'var(--charcoal)', color: 'var(--cream)' }}>
-            Hire me <ArrowUpRight size={12} />
+            className="hidden md:inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-6 py-3 rounded-lg transition-all hover:shadow-lg hover:scale-105"
+            style={{ backgroundColor: '#FFC839', color: '#1E1B22' }}>
+            Hire me <ArrowUpRight size={14} />
           </a>
-          <button onClick={() => setMenuOpen(true)} className="md:hidden flex flex-col gap-[6px] p-2 group">
-            <span className="block w-6 h-[1.2px] transition-transform group-hover:w-4" style={{ backgroundColor: 'var(--charcoal)' }} />
-            <span className="block w-4 h-[1.2px] transition-transform group-hover:w-6" style={{ backgroundColor: 'var(--charcoal)' }} />
+          <button onClick={() => setMenuOpen(true)} className="md:hidden flex flex-col gap-1.5 p-2 group">
+            <span className="block w-6 h-0.5 transition-transform group-hover:w-4" style={{ backgroundColor: '#1E1B22' }} />
+            <span className="block w-4 h-0.5 transition-transform group-hover:w-6" style={{ backgroundColor: '#1E1B22' }} />
           </button>
         </div>
       </header>
 
       {/* ── Hero ────────────────────────────────────────────────────── */}
-      <section className="relative max-w-5xl mx-auto px-6 md:px-12 pt-24 pb-36 text-center overflow-hidden">
-
-        {/* ── Glow Blobs ── */}
-        <div className="absolute inset-0 pointer-events-none" aria-hidden>
-          {/* Large Mint glow top-right */}
-          <div className="hero-glow-mint" style={{ width: 520, height: 520, top: '-120px', right: '-100px', opacity: 0.55 }} />
-          {/* Large Cream glow bottom-left */}
-          <div className="hero-glow-cream" style={{ width: 480, height: 480, bottom: '-80px', left: '-80px', opacity: 0.7, animationDelay: '2.5s' }} />
-          {/* Small sharp top-left accent */}
-          <div className="hero-glow-mint" style={{ width: 260, height: 260, top: '60px', left: '-40px', opacity: 0.35, animationDelay: '1.2s' }} />
-          {/* Inner glow center-bottom */}
-          <div className="hero-glow-cream" style={{ width: 320, height: 320, bottom: '0px', left: '50%', transform: 'translateX(-50%)', opacity: 0.3, animationDelay: '3.5s' }} />
-
-          {/* Sparkles */}
-          <svg className="sparkle" style={{ top: '18%', left: '12%', width: 20, height: 20, animationDelay: '0s' }} viewBox="0 0 24 24" fill="#D1EDC0"><path d="M12 2 L13.5 10.5 L22 12 L13.5 13.5 L12 22 L10.5 13.5 L2 12 L10.5 10.5 Z" /></svg>
-          <svg className="sparkle" style={{ top: '30%', right: '10%', width: 14, height: 14, animationDelay: '1s' }} viewBox="0 0 24 24" fill="#000"><path d="M12 2 L13.5 10.5 L22 12 L13.5 13.5 L12 22 L10.5 13.5 L2 12 L10.5 10.5 Z" /></svg>
-          <svg className="sparkle" style={{ bottom: '25%', left: '20%', width: 18, height: 18, animationDelay: '2s' }} viewBox="0 0 24 24" fill="#D1EDC0"><path d="M12 2 L13.5 10.5 L22 12 L13.5 13.5 L12 22 L10.5 13.5 L2 12 L10.5 10.5 Z" /></svg>
-          <svg className="sparkle" style={{ top: '60%', right: '15%', width: 12, height: 12, animationDelay: '1.5s' }} viewBox="0 0 24 24" fill="#4B5563"><path d="M12 2 L13.5 10.5 L22 12 L13.5 13.5 L12 22 L10.5 13.5 L2 12 L10.5 10.5 Z" /></svg>
-          <svg className="sparkle" style={{ top: '8%', right: '30%', width: 10, height: 10, animationDelay: '2.5s' }} viewBox="0 0 24 24" fill="#000"><path d="M12 2 L13.5 10.5 L22 12 L13.5 13.5 L12 22 L10.5 13.5 L2 12 L10.5 10.5 Z" /></svg>
-
-          {/* Orbiting dots around center */}
-          <div style={{ position: 'absolute', top: '50%', left: '50%' }}>
-            <div className="orbit-dot" style={{ width: 10, height: 10, marginTop: -5, marginLeft: -5, backgroundColor: '#D1EDC0', boxShadow: '0 0 12px 4px rgba(209,237,192,0.9)', animationDuration: '6s' }} />
-            <div className="orbit-dot" style={{ width: 7, height: 7, marginTop: -3.5, marginLeft: -3.5, backgroundColor: '#111', boxShadow: '0 0 8px 2px rgba(0,0,0,0.4)', animationDuration: '10s', animationDelay: '-3s' }} />
-            <div className="orbit-dot-reverse" style={{ width: 6, height: 6, marginTop: -3, marginLeft: -3, backgroundColor: '#D1EDC0', boxShadow: '0 0 10px 3px rgba(209,237,192,0.7)', animationDuration: '8s' }} />
-          </div>
-
-          {/* Thin morphing rings */}
-          <div className="animate-morph" style={{ position: 'absolute', top: '15%', right: '5%', width: 120, height: 120, border: '1.5px solid rgba(0,0,0,0.12)', animationDuration: '12s' }} />
-          <div className="animate-morph" style={{ position: 'absolute', bottom: '20%', left: '8%', width: 80, height: 80, border: '1.5px solid rgba(209,237,192,0.5)', animationDuration: '9s', animationDelay: '2s' }} />
-        </div>
+      <section className="max-w-4xl mx-auto px-6 md:px-12 pt-28 pb-32 text-center">
 
         {/* ── Content ── */}
-        <div className="relative z-10">
-          <div className="inline-flex items-center gap-2 mb-8 px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase"
-            style={{ border: '1px solid rgba(0,0,0,0.12)', color: 'var(--muted)', backgroundColor: 'rgba(255,255,255,0.4)', backdropFilter: 'blur(8px)' }}>
-            <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: '#22c55e', boxShadow: '0 0 8px 2px rgba(34,197,94,0.7)' }} />
+        <div>
+          <div className="inline-flex items-center gap-2 mb-10 px-5 py-2.5 rounded-xl text-xs font-bold tracking-widest uppercase"
+            style={{ border: '2px solid #FFC839', color: '#1E1B22', backgroundColor: '#FFC839' }}>
+            <span className="w-2.5 h-2.5 rounded-full animate-pulse" style={{ backgroundColor: '#1E1B22' }} />
             Available for opportunities
           </div>
 
-          <h1 className="serif text-6xl md:text-8xl leading-[1.02] mb-6 tracking-tight">
-            Building things{' '}
-            <em className="shimmer-heading serif-italic">people love</em>{' '}to use.
+          <h1 className="text-6xl md:text-8xl font-black mb-8 leading-tight tracking-tight" style={{ color: '#1E1B22' }}>
+            Crafting{' '}
+            <span style={{ color: '#FFC839' }}>innovative</span>{' '}<br/>solutions
           </h1>
 
-          <p className="text-base md:text-lg leading-relaxed mb-10 max-w-lg mx-auto" style={{ color: 'var(--muted)' }}>
-            I'm <strong style={{ color: 'var(--charcoal)' }}>Abhishek Patel</strong>, a Software Engineering
-            undergrad ('26) crafting scalable backends and pixel-perfect interfaces with Java, Spring Boot &amp; React.
+          <p className="text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed" style={{ color: '#5A5763' }}>
+            I'm <strong style={{ color: '#1E1B22' }}>Abhishek Patel</strong>, a Software Engineer building scalable backends and beautiful interfaces with Java, Spring Boot, React, and Flutter.
           </p>
 
           <div className="flex flex-wrap justify-center gap-4">
             <a href="#projects"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold tracking-wide transition-all hover:-translate-y-0.5 hover:shadow-lg active:scale-95"
-              style={{ backgroundColor: 'var(--charcoal)', color: '#FAF4F1', boxShadow: '0 4px 20px rgba(0,0,0,0.2)' }}>
-              View my work <ArrowUpRight size={15} />
+              className="btn-primary">
+              View my work <ArrowUpRight size={18} />
             </a>
             <a href="https://drive.google.com/file/d/YOUR_RESUME_ID/view" target="_blank" rel="noreferrer"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold tracking-wide transition-all hover:-translate-y-0.5 hover:shadow-lg active:scale-95"
-              style={{ backgroundColor: 'rgba(255,255,255,0.6)', color: 'var(--charcoal)', border: '1px solid rgba(0,0,0,0.12)', backdropFilter: 'blur(8px)' }}>
-              <Download size={15} /> Resume
+              className="btn-ghost">
+              <Download size={16} /> Download Resume
             </a>
             <a href="#contact"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold tracking-wide transition-all hover:-translate-y-0.5 active:scale-95"
-              style={{ border: '1.5px solid rgba(0,0,0,0.18)', color: 'var(--charcoal)' }}>
+              className="btn-ghost">
               Get in touch
             </a>
           </div>
         </div>
       </section>
 
-      {/* ── Marquee ───────────────────────────────────────────────────── */}
-      <div className="overflow-hidden py-5"
-        style={{ borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)', backgroundColor: 'var(--cream-dark)' }}>
-        <div className="flex gap-8 animate-marquee whitespace-nowrap select-none">
-          {STACK.map((s, i) => (
-            <span key={i} className="text-sm font-semibold tracking-widest uppercase"
-              style={{ color: s === '·' ? 'var(--terracotta)' : 'var(--muted)' }}>{s}</span>
+      {/* ── Tech Stack ───────────────────────────────────────────────────── */}
+      <div className="py-10 px-6 transition-colors duration-300" style={{ borderTop: '3px solid #FFC839', borderBottom: '3px solid #FFC839', backgroundColor: darkMode ? '#1a2332' : '#FFFAF5' }}>
+        <div className="max-w-6xl mx-auto flex flex-wrap gap-4 justify-center">
+          {['Java', 'Spring Boot', 'React', 'MySQL', 'Flutter', 'REST APIs'].map((tech) => (
+            <span key={tech} className="text-sm font-bold px-5 py-3 rounded-lg transition-all hover:shadow-md hover:scale-105" style={{ color: darkMode ? '#FFC839' : '#1E1B22', backgroundColor: darkMode ? '#2a3f5f' : '#FFFFFF', border: '2px solid #FFC839' }}>
+              {tech}
+            </span>
           ))}
         </div>
       </div>
 
       {/* ── About ────────────────────────────────────────────────────── */}
-      <section id="about" className="section-glow max-w-6xl mx-auto px-6 md:px-12 py-28 scroll-mt-20 grid md:grid-cols-2 gap-16 items-start">
+      <section id="about" className="max-w-6xl mx-auto px-6 md:px-12 py-28 scroll-mt-20 grid md:grid-cols-2 gap-20 items-start transition-colors duration-300" style={{ borderTop: '3px solid #FFC839', borderBottom: '3px solid #FFC839', backgroundColor: darkMode ? '#0F1419' : '#FFFFFF' }}>
         <div>
-          <span className="text-xs font-bold tracking-widest uppercase mb-4 block" style={{ color: 'var(--charcoal)', opacity: 0.4 }}>
-            § About
+          <span className="text-xs font-bold tracking-widest uppercase mb-4 block px-4 py-2 rounded-lg" style={{ color: darkMode ? '#1E1B22' : '#FFC839', backgroundColor: darkMode ? '#FFC839' : '#1E1B22', width: 'fit-content' }}>
+            About
           </span>
-          <h2 className="serif text-5xl md:text-6xl leading-tight mb-6">
-            Turning ideas into{' '}<em className="serif-italic">real software.</em>
+          <h2 className="text-4xl md:text-5xl font-black leading-tight mb-8" style={{ color: darkMode ? '#FFFFFF' : '#1E1B22' }}>
+            Building scalable software at scale
           </h2>
-          <p className="leading-relaxed mb-5" style={{ color: 'var(--muted)' }}>
-            I'm a final-year B.Tech Software Engineering student at CSVTU. I build full-stack products — from robust
-            Spring Boot microservices to smooth Flutter apps — focused on clean architecture and great UX.
+          <p className="leading-relaxed mb-5 text-lg" style={{ color: darkMode ? '#cccccc' : '#5A5763' }}>
+            Final-year B.Tech student at CSVTU. I build full-stack products from robust Java backends to smooth React frontends.
           </p>
-          <p className="leading-relaxed mb-8" style={{ color: 'var(--muted)' }}>
-            I solve DSA problems daily and enjoy exploring system design patterns and building tools that make
-            developers' lives easier.
+          <p className="leading-relaxed mb-8 text-lg" style={{ color: darkMode ? '#cccccc' : '#5A5763' }}>
+            Passionate about clean architecture, system design, and solving challenging problems.
           </p>
-          <div className="flex flex-wrap gap-3">
-            <a href={LC_PROFILE} target="_blank" rel="noreferrer" className="btn-primary" style={{ background: '#FFA116', color: '#fff' }}>
-              <Code2 size={14} /> LeetCode {lcStats && <span>· {lcStats.totalSolved}</span>}
+          <div className="flex gap-4 flex-wrap pt-4">
+            <a href={LC_PROFILE} target="_blank" rel="noreferrer" className="btn-primary flex-1 md:flex-none">
+              <Code2 size={18} /> LeetCode
             </a>
-            <a href={GFG_PROFILE} target="_blank" rel="noreferrer" className="btn-primary" style={{ background: '#2F8D46', color: '#fff' }}>
-              <Code2 size={14} /> GeeksforGeeks
+            <a href={GFG_PROFILE} target="_blank" rel="noreferrer" className="btn-ghost flex-1 md:flex-none">
+              <Code2 size={18} /> GeeksforGeeks
             </a>
           </div>
         </div>
-        <div className="space-y-10">
+        <div className="space-y-6 pt-4">
           {[
             { label: 'DSA Problems Solved', value: lcStats ? `${lcStats.totalSolved}+` : '350+', pct: 85 },
             { label: 'Academic CGPA', value: '8.45 / 10', pct: 84 },
             { label: 'Projects Shipped', value: '6+', pct: 75 },
           ].map(s => (
-            <div key={s.label}>
-              <div className="flex justify-between items-end mb-2">
-                <span className="text-sm font-medium" style={{ color: 'var(--muted)' }}>{s.label}</span>
-                <span className="serif text-3xl" style={{ color: 'var(--charcoal)' }}>{s.value}</span>
+            <div key={s.label} className="p-6 rounded-xl transition-all hover:shadow-lg" style={{ backgroundColor: darkMode ? '#1a2332' : '#1E1B22', border: '2px solid #FFC839', borderRadius: '12px' }}>
+              <div className="flex justify-between items-end mb-4">
+                <span className="text-sm font-bold uppercase tracking-widest" style={{ color: '#FFC839' }}>{s.label}</span>
+                <span className="text-5xl font-black" style={{ color: '#FFC839' }}>{s.value}</span>
               </div>
-              <div className="h-[3px] rounded-full" style={{ backgroundColor: 'rgba(0,0,0,0.08)' }}>
-                <div className="stat-bar-fill" style={{ width: `${s.pct}%` }} />
+              <div className="h-3 rounded-full" style={{ backgroundColor: darkMode ? '#2a3f5f' : '#2A2733' }}>
+                <div className="stat-bar-fill h-full rounded-full" style={{ width: `${s.pct}%` }} />
               </div>
+              <div className="mt-3 text-right text-xs font-semibold" style={{ color: '#FFC839' }}>{s.pct}% Complete</div>
             </div>
           ))}
         </div>
       </section>
 
       {/* ── Skills ────────────────────────────────────────────────────── */}
-      <section id="skills" className="section-glow py-28 scroll-mt-20" style={{ borderTop: '1px solid rgba(0,0,0,0.07)' }}>
+      <section id="skills" className="py-20 scroll-mt-20 transition-colors duration-300" style={{ borderTop: '3px solid #FFC839', backgroundColor: darkMode ? '#0F1419' : '#FFFAF5' }}>
         <div className="max-w-6xl mx-auto px-6 md:px-12">
-          <div className="mb-16">
-            <span className="text-xs font-bold tracking-widest uppercase mb-4 block" style={{ color: 'var(--charcoal)', opacity: 0.4 }}>
-              § Skills
+          <div className="mb-12">
+            <span className="text-xs font-bold tracking-widest uppercase mb-4 block px-4 py-2 rounded-lg" style={{ color: darkMode ? '#1E1B22' : '#FFFFFF', backgroundColor: darkMode ? '#FFC839' : '#1E1B22', width: 'fit-content' }}>
+              Skills
             </span>
-            <h2 className="serif text-5xl md:text-6xl leading-tight">Tools of <em className="serif-italic">my trade.</em></h2>
+            <h2 className="text-4xl md:text-5xl font-bold leading-tight" style={{ color: darkMode ? '#FFFFFF' : '#1E1B22' }}>Tools & Technologies</h2>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {SKILLS.map(group => (
-              <div key={group.category} className="glass-card p-8">
-                <h3 className="text-xs font-bold tracking-widest uppercase mb-6" style={{ color: 'var(--charcoal)', opacity: 0.5 }}>{group.category}</h3>
+              <div key={group.category} className="p-8 rounded-xl transition-all" style={{ backgroundColor: darkMode ? '#1a2332' : '#FFC839', color: darkMode ? '#FFC839' : '#1E1B22', border: '2px solid #FFC839' }}>
+                <h3 className="text-xs font-bold tracking-widest uppercase mb-6" style={{ color: darkMode ? '#FFC839' : '#1E1B22' }}>{group.category}</h3>
                 <div className="flex flex-wrap gap-4">
                   {group.items.map(item => (
                     <div key={item.name}
-                      className="group flex flex-col items-center gap-2 p-3 rounded-2xl transition-all hover:-translate-y-1 hover:shadow-md cursor-default flex-1 basis-[calc(33%-1rem)] min-w-[80px]"
-                      style={{ background: 'rgba(255,255,255,0.4)' }}>
+                      className="group flex flex-col items-center gap-2 p-3 rounded-lg transition-all cursor-default flex-1 basis-[calc(33%-1rem)] min-w-20"
+                      style={{ backgroundColor: '#1E1B22' }}>
                       <span className="text-3xl transition-transform group-hover:scale-125">{item.icon}</span>
-                      <span className="text-[10px] font-bold tracking-tight uppercase" style={{ color: 'var(--muted)' }}>{item.name}</span>
+            <span className="text-[10px] font-bold tracking-tight uppercase" style={{ color: '#FFC839' }}>{item.name}</span>
                     </div>
                   ))}
                 </div>
@@ -561,15 +530,15 @@ function App() {
       </section>
 
       {/* ── Projects ───────────────────────────────────────────────────── */}
-      <section id="projects" className="section-glow max-w-6xl mx-auto px-6 md:px-12 py-28 scroll-mt-20" style={{ borderTop: '1px solid rgba(0,0,0,0.07)' }}>
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
+      <section id="projects" className="max-w-6xl mx-auto px-6 md:px-12 py-20 scroll-mt-20" style={{ borderTop: '3px solid #FFC839' }}>
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
           <div>
-            <span className="text-xs font-bold tracking-widest uppercase mb-4 block" style={{ color: 'var(--charcoal)', opacity: 0.4 }}>§ Selected Work</span>
-            <h2 className="serif text-5xl md:text-6xl leading-tight">Things I've <em className="serif-italic">built.</em></h2>
+            <span className="text-xs font-bold tracking-widest uppercase mb-4 block px-4 py-2 rounded-lg" style={{ color: darkMode ? '#1E1B22' : '#FFFFFF', backgroundColor: darkMode ? '#FFC839' : '#1E1B22', width: 'fit-content' }}>Selected Work</span>
+            <h2 className="text-4xl md:text-5xl font-bold leading-tight" style={{ color: darkMode ? '#FFFFFF' : '#1E1B22' }}>Projects & Products</h2>
           </div>
           <a href="https://github.com/abhishek0112cs221008" target="_blank" rel="noreferrer"
-            className="link-underline text-sm font-medium self-start md:self-auto" style={{ color: 'var(--muted)' }}>
-            All on GitHub <Github size={14} />
+            className="link-underline text-sm font-bold px-4 py-2 rounded-lg transition-all self-start md:self-auto" style={{ color: darkMode ? '#FFFFFF' : '#FFFFFF', backgroundColor: darkMode ? '#1a2332' : '#1E1B22', border: '2px solid #FFC839' }}>
+            View all on GitHub <Github size={14} />
           </a>
         </div>
 
@@ -586,42 +555,41 @@ function App() {
             {repos.map(repo => {
               const meta = REPO_META[repo.name] ?? {};
               const liveUrl = meta.live || repo.homepage || null;
-              const langColor = LANG_COLOR[repo.language ?? ''] ?? LANG_COLOR.default;
               return (
-                <article key={repo.name} className="project-card flex flex-col p-7">
+                <article key={repo.name} className="flex flex-col p-7 rounded-xl transition-all" style={{ backgroundColor: darkMode ? '#1a2332' : '#1E1B22', color: '#FFFFFF', border: '2px solid #FFC839' }}>
                   <div className="flex items-start justify-between mb-4">
-                    <span className="pill">{meta.label ?? repo.language ?? 'Project'}</span>
+                    <span className="px-3 py-1.5 rounded-lg text-xs font-bold" style={{ backgroundColor: '#FFC839', color: '#1E1B22' }}>{meta.label ?? repo.language ?? 'Project'}</span>
                     <div className="flex items-center gap-3">
                       {repo.stargazers_count > 0 && (
-                        <span className="flex items-center gap-1 text-xs font-medium" style={{ color: 'var(--muted)' }}>
+                        <span className="flex items-center gap-1 text-xs font-medium" style={{ color: darkMode ? '#cccccc' : '#5A5763' }}>
                           <Star size={12} /> {repo.stargazers_count}
                         </span>
                       )}
                       {repo.forks_count > 0 && (
-                        <span className="flex items-center gap-1 text-xs font-medium" style={{ color: 'var(--muted)' }}>
+                        <span className="flex items-center gap-1 text-xs font-medium" style={{ color: darkMode ? '#cccccc' : '#5A5763' }}>
                           <GitFork size={12} /> {repo.forks_count}
                         </span>
                       )}
                     </div>
                   </div>
-                  <h3 className="serif text-2xl mb-2">{repo.name.replace(/-/g, ' ').replace(/_/g, ' ')}</h3>
-                  <p className="text-sm leading-relaxed flex-1 mb-6" style={{ color: 'var(--muted)' }}>
+                  <h3 className="text-xl font-bold mb-2" style={{ color: '#FFC839' }}>{repo.name.replace(/-/g, ' ').replace(/_/g, ' ')}</h3>
+                  <p className="text-sm leading-relaxed flex-1 mb-6" style={{ color: '#FFFAF5' }}>
                     {meta.desc ?? repo.name}
                   </p>
                   <div className="flex items-center justify-between mt-auto">
                     {repo.language && (
                       <div className="flex items-center gap-2">
-                        <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: langColor }} />
-                        <span className="text-xs font-medium" style={{ color: 'var(--muted)' }}>{repo.language}</span>
+                        <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: '#FFC839' }} />
+                        <span className="text-xs font-medium" style={{ color: '#FFFAF5' }}>{repo.language}</span>
                       </div>
                     )}
                     <div className="flex items-center gap-2 ml-auto">
-                      <a href={repo.html_url} target="_blank" rel="noreferrer" className="icon-btn">
-                        <Github size={15} />
+                      <a href={repo.html_url} target="_blank" rel="noreferrer" className="p-2 rounded-lg transition-all hover:gap-2 flex items-center gap-0" style={{ backgroundColor: '#FFC839', color: '#1E1B22' }}>
+                        <Github size={16} />
                       </a>
                       {liveUrl && (
-                        <a href={liveUrl} target="_blank" rel="noreferrer" className="icon-btn" style={{ background: 'rgba(0,0,0,0.85)', color: '#FAF4F1' }}>
-                          <ExternalLink size={15} />
+                        <a href={liveUrl} target="_blank" rel="noreferrer" className="px-3 py-2 rounded-lg transition-all flex items-center gap-2 font-semibold" style={{ backgroundColor: '#FFC839', color: '#1E1B22' }}>
+                          Visit <ArrowUpRight size={16} />
                         </a>
                       )}
                     </div>
@@ -633,349 +601,68 @@ function App() {
         )}
       </section>
 
-      {/* ── Education ───────────────────────────────────────────────────── */}
-      <section id="education" className="section-glow py-24 scroll-mt-20" style={{ borderTop: '1px solid rgba(0,0,0,0.07)' }}>
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="grid lg:grid-cols-3 gap-12 lg:gap-20">
-            <div className="lg:col-span-1">
-              <span className="text-xs font-bold tracking-[0.2em] uppercase mb-4 block" style={{ color: 'var(--charcoal)', opacity: 0.4 }}>§ Academic Foundation</span>
-              <h2 className="serif text-5xl md:text-6xl leading-[0.9] mb-8">Educational <em className="serif-italic">Journey.</em></h2>
-              <p className="text-sm leading-relaxed max-w-sm" style={{ color: 'var(--muted)' }}>
-                A timeline of my formal education and academic achievements, focusing on Computer Science and engineering principles.
-              </p>
-            </div>
-            <div className="lg:col-span-2 space-y-6">
-              <div className="grid sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-6">
-                {EDUCATION.map((edu, i) => (
-                  <div key={i} className="glass-card flex gap-5 p-7 group h-full">
-                    <div className="text-3xl flex-shrink-0 mt-1 p-3 rounded-2xl transition-colors group-hover:bg-white/50 h-fit"
-                      style={{ background: 'rgba(255,255,255,0.3)', border: '1px solid rgba(255,255,255,0.5)' }}>
-                      {edu.icon}
-                    </div>
-                    <div className="flex-1 min-w-0 flex flex-col">
-                      <div className="flex justify-between items-start gap-4 mb-2">
-                        <h3 className="serif text-xl leading-tight" style={{ color: 'var(--charcoal)' }}>{edu.degree}</h3>
-                        <span className="text-[10px] px-2.5 py-1 rounded-full font-bold uppercase tracking-wider flex-shrink-0 whitespace-nowrap"
-                          style={{ backgroundColor: 'rgba(0,0,0,0.08)', color: 'var(--charcoal)' }}>{edu.score}</span>
-                      </div>
-                      <p className="text-sm font-medium mb-3 opacity-60" style={{ color: 'var(--charcoal)' }}>{edu.school}</p>
-                      <div className="flex items-center gap-1.5 mt-auto">
-                        <BookOpen size={12} style={{ color: 'var(--muted)' }} />
-                        <span className="text-[10px] font-bold uppercase tracking-widest" style={{ color: 'var(--muted)' }}>{edu.year}</span>
-                      </div>
-                    </div>
+      {/* ── Education ──────────────────────────────────────────────────── */}
+      <section id="education" className="py-20 scroll-mt-20 transition-colors duration-300" style={{ borderTop: '3px solid #FFC839', backgroundColor: darkMode ? '#0F1419' : '#FFFAF5' }}>
+        <div className="max-w-6xl mx-auto px-6 md:px-12">
+          <div className="mb-12">
+            <span className="text-xs font-bold tracking-widest uppercase mb-4 block px-4 py-2 rounded-lg" style={{ color: darkMode ? '#1E1B22' : '#FFFFFF', backgroundColor: darkMode ? '#FFC839' : '#1E1B22', width: 'fit-content' }}>Education</span>
+            <h2 className="text-4xl md:text-5xl font-bold leading-tight" style={{ color: darkMode ? '#FFFFFF' : '#1E1B22' }}>Academic Background</h2>
+          </div>
+          <div className="space-y-4">
+            {EDUCATION.map((edu, i) => (
+              <div key={i} className="p-6 rounded-xl transition-all" style={{ backgroundColor: darkMode ? '#1a2332' : '#FFC839', border: darkMode ? '2px solid #FFC839' : '2px solid #1E1B22' }}>
+                <div className="flex justify-between items-start gap-4">
+                  <div className="flex-1">
+                    <h3 className="font-bold mb-1" style={{ color: darkMode ? '#FFFFFF' : '#1E1B22' }}>{edu.degree}</h3>
+                    <p className="text-sm mb-2" style={{ color: darkMode ? '#cccccc' : '#1E1B22' }}>{edu.school}</p>
+                    <p className="text-xs" style={{ color: darkMode ? '#999999' : '#1E1B22' }}>{edu.year}</p>
                   </div>
-                ))}
+                  <span className="px-3 py-1.5 rounded-lg text-sm font-semibold shrink-0" style={{ backgroundColor: '#FFC839', color: '#1E1B22' }}>
+                    {edu.score}
+                  </span>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
-
-      {/* ── Coding Intelligence ────────────────────────────────────────── */}
-      <section className="py-24" style={{ backgroundColor: 'var(--cream)', borderTop: '1px solid var(--border)' }}>
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="grid lg:grid-cols-3 gap-12 lg:gap-20">
-            {/* Header Column */}
-            <div className="lg:col-span-1">
-              <span className="text-xs font-bold tracking-[0.2em] uppercase mb-4 block" style={{ color: 'var(--terracotta)' }}>
-                § Coding Intel
-              </span>
-              <h2 className="serif text-5xl md:text-6xl leading-[0.9] mb-8">
-                LeetCode <em className="serif-italic">Pulse.</em>
-              </h2>
-              <p className="text-sm leading-relaxed max-w-sm mb-8" style={{ color: 'var(--muted)' }}>
-                Live tracking of problem-solving activity, contest performance, and algorithmic consistency across the platform.
-              </p>
-              <div className="p-6 rounded-2xl" style={{ border: '1px solid var(--border)', backgroundColor: 'var(--cream-dark)' }}>
-                <p className="text-[10px] font-bold uppercase tracking-widest mb-3 opacity-40">Quick Stats</p>
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center">
-                    <span className="text-xs font-bold uppercase tracking-wider opacity-60">Active Days</span>
-                    <span className="serif text-2xl" style={{ color: 'var(--terracotta)' }}>{lcActiveDays || '—'}</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-xs font-bold uppercase tracking-wider opacity-60">Max Streak</span>
-                    <span className="serif text-2xl" style={{ color: 'var(--terracotta)' }}>{lcMaxStreak || '—'}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Content Column */}
-            <div className="lg:col-span-2">
-              <div className="grid grid-cols-1 gap-8">
-                {/* Row 1: Global Stats */}
-                <div className="grid md:grid-cols-2 gap-6">
-                  {/* Contest Rating Card */}
-                  <div className="p-8 rounded-3xl group transition-all duration-500 hover:shadow-xl hover:-translate-y-1" style={{ backgroundColor: 'var(--cream)', border: '1px solid var(--border)' }}>
-                    <div className="flex justify-between items-start mb-6">
-                      <div>
-                        <p className="text-[10px] uppercase font-bold tracking-widest mb-1" style={{ color: 'var(--muted)' }}>Contest Rating</p>
-                        <h3 className="serif text-4xl group-hover:text-[var(--terracotta)] transition-colors">{Math.round(lcContest?.contestRating ?? 1450)}</h3>
-                      </div>
-                      <div className="text-right">
-                        <p className="text-[10px] uppercase font-bold tracking-widest mb-1" style={{ color: 'var(--muted)' }}>Global Ranking</p>
-                        <p className="font-bold text-sm">
-                          {lcContest?.contestGlobalRanking?.toLocaleString() ?? '519,624'}
-                          <span className="opacity-40 font-medium ml-1">/ 839,080</span>
-                        </p>
-                      </div>
-                    </div>
-                    {/* Dynamic Contest Graph */}
-                    <div className="h-28 w-full relative mt-8">
-                      <svg viewBox="0 0 100 40" className="w-full h-full overflow-visible">
-                        {(() => {
-                          const history = lcContest?.contestParticipation?.filter(p => p.attended) ?? [];
-                          if (history.length < 2) {
-                            return (
-                              <>
-                                <path d="M0,35 Q25,30 50,20 T100,38" fill="none" stroke="var(--terracotta)" strokeWidth="1.5" strokeOpacity="0.3" strokeDasharray="1,2" />
-                                <circle cx="50" cy="20" r="2.5" fill="var(--terracotta)" className="animate-pulse" />
-                              </>
-                            );
-                          }
-                          const ratings = history.map(h => h.rating);
-                          const min = Math.min(...ratings) * 0.95;
-                          const max = Math.max(...ratings) * 1.05;
-                          const range = max - min;
-                          const points = history.map((h, i) => ({
-                            x: (i / (history.length - 1)) * 100,
-                            y: 40 - ((h.rating - min) / range) * 35
-                          }));
-                          const d = `M ${points.map(p => `${p.x},${p.y}`).join(' L ')}`;
-                          return (
-                            <>
-                              <path d={d} fill="none" stroke="var(--terracotta)" strokeWidth="1.5" strokeLinecap="round" />
-                              <circle cx={points[points.length - 1].x} cy={points[points.length - 1].y} r="2.5" fill="var(--terracotta)" />
-                            </>
-                          );
-                        })()}
-                      </svg>
-                    </div>
-                  </div>
-
-                  {/* Top Percentage Card */}
-                  <div className="p-8 rounded-3xl flex flex-col justify-between group hover:shadow-xl transition-all duration-500" style={{ backgroundColor: 'var(--cream)', border: '1px solid var(--border)' }}>
-                    <div>
-                      <div className="flex justify-between items-start mb-1">
-                        <p className="text-[10px] uppercase font-bold tracking-widest" style={{ color: 'var(--muted)' }}>Top percentile</p>
-                        <FaTrophy size={14} className="text-[var(--terracotta)] opacity-40" />
-                      </div>
-                      <h3 className="serif text-5xl group-hover:text-[var(--terracotta)] transition-colors">
-                        {lcContest ? (100 - lcContest.contestAttendUpper).toFixed(2) : '62.36'}
-                        <span className="serif-italic text-2xl ml-1">%</span>
-                      </h3>
-                    </div>
-                    <div className="flex items-end gap-1.5 h-20 mt-8">
-                      {[2, 4, 3, 6, 8, 12, 10, 16, 14, 10, 8, 6, 4, 3, 2, 1].map((h, i) => (
-                        <div key={i} className="flex-1 rounded-sm transition-all duration-700 hover:opacity-100"
-                          style={{
-                            height: `${h * 5}%`,
-                            backgroundColor: i === 7 ? 'var(--terracotta)' : 'var(--cream-dark)',
-                            opacity: i === 7 ? 1 : 0.4
-                          }} />
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Row 2: Solved Gauge & Badges */}
-                <div className="grid md:grid-cols-2 gap-6">
-                  {/* Solved Questions Gauge */}
-                  <div className="p-8 rounded-3xl flex items-center gap-8 group hover:shadow-xl transition-all duration-500" style={{ backgroundColor: 'var(--cream)', border: '1px solid var(--border)' }}>
-                    <div className="relative w-36 h-36 flex-shrink-0">
-                      <svg viewBox="0 0 100 100" className="w-full h-full -rotate-90">
-                        <circle cx="50" cy="50" r="42" fill="none" stroke="var(--sand)" strokeWidth="6" />
-                        <circle cx="50" cy="50" r="42" fill="none" stroke="var(--terracotta)" strokeWidth="8" strokeLinecap="round"
-                          strokeDasharray="264" strokeDashoffset={264 - (264 * (lcStats?.totalSolved ?? 450) / (lcStats?.totalQuestions ?? 3846))}
-                          className="transition-all duration-[1500ms] ease-out" />
-                      </svg>
-                      <div className="absolute inset-0 flex flex-col items-center justify-center">
-                        <span className="serif text-4xl leading-none">{lcStats?.totalSolved ?? 450}</span>
-                        <span className="text-[10px] text-[var(--muted)] uppercase font-bold mt-1 tracking-tighter">Solved</span>
-                      </div>
-                    </div>
-                    <div className="flex-1 space-y-5">
-                      {[
-                        { label: 'Easy', val: lcStats?.easySolved ?? 168, total: lcStats?.totalEasy ?? 927, color: '#00b8a3' },
-                        { label: 'Medium', val: lcStats?.mediumSolved ?? 242, total: lcStats?.totalMedium ?? 2010, color: '#ffb800' },
-                        { label: 'Hard', val: lcStats?.hardSolved ?? 40, total: lcStats?.totalHard ?? 909, color: '#ff2d55' },
-                      ].map(d => (
-                        <div key={d.label}>
-                          <div className="flex justify-between text-[10px] font-bold uppercase mb-1.5">
-                            <span style={{ color: d.color }}>{d.label}</span>
-                            <span style={{ color: 'var(--charcoal)' }}>{d.val}<span className="opacity-30">/{d.total}</span></span>
-                          </div>
-                          <div className="h-1.5 rounded-full overflow-hidden" style={{ backgroundColor: 'var(--sand)' }}>
-                            <div className="h-full rounded-full transition-all duration-1000" style={{ width: `${(d.val / d.total) * 100}%`, backgroundColor: d.color }} />
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Badges Card */}
-                  <div className="p-8 rounded-3xl relative overflow-hidden flex flex-col justify-between" style={{ backgroundColor: 'var(--cream)', border: '1px solid var(--border)' }}>
-                    <div>
-                      <p className="text-[10px] uppercase font-bold tracking-widest mb-1" style={{ color: 'var(--muted)' }}>Badges</p>
-                      <h3 className="serif text-4xl mb-6">{lcBadges?.badgesCount ?? 6}</h3>
-                      <div className="flex gap-4">
-                        {(lcBadges?.badges.slice(-3).reverse() ?? []).map((b, i) => (
-                          <div key={i} className="w-16 h-16 group relative">
-                            <img src={b.icon.startsWith('http') ? b.icon : `https://leetcode.com${b.icon}`} alt={b.name} className="w-full h-full object-contain filter grayscale hover:grayscale-0 transition-all duration-500" />
-                            <div className="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-[var(--charcoal)] text-[var(--cream)] text-[8px] rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                              {b.name}
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="mt-6 border-t pt-4" style={{ borderColor: 'var(--border)' }}>
-                      <p className="text-[10px] uppercase font-bold tracking-widest text-[var(--muted)] mb-1">Latest Achievement</p>
-                      <p className="font-bold text-xs">{lcBadges?.badges[lcBadges.badges.length - 1]?.name ?? 'LeetCode Daily Badge'}</p>
-                    </div>
-                    <ArrowUpRight className="absolute top-8 right-8 text-[var(--muted)]" size={18} />
-                  </div>
-                </div>
-
-                {/* Heatmap */}
-                <div className="p-8 rounded-3xl" style={{ backgroundColor: 'var(--cream)', border: '1px solid var(--border)' }}>
-                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10">
-                    <h3 className="serif text-3xl">
-                      {Object.values(lcCalendar).reduce((a, b) => a + b, 0)} <span className="text-sm font-sans font-medium text-[var(--muted)]">submissions in 365 days</span>
-                    </h3>
-                    <div className="flex items-center gap-2">
-                      <span className="text-[10px] uppercase font-bold opacity-40">Less</span>
-                      <div className="flex gap-1">
-                        {[0, 1, 3, 5].map(v => (
-                          <div key={v} className="w-3.5 h-3.5 rounded-[2px]"
-                            style={{ backgroundColor: v === 0 ? 'var(--cream-dark)' : `rgba(17,24,39, ${v * 0.2})`, border: '1px solid var(--border)' }} />
-                        ))}
-                      </div>
-                      <span className="text-[10px] uppercase font-bold opacity-40">More</span>
-                    </div>
-                  </div>
-
-                  <div className="overflow-x-auto pb-8 mask-fade-right">
-                    <div className="flex gap-1.5" style={{ minWidth: '850px' }}>
-                      {/* Day Labels */}
-                      <div className="flex flex-col gap-1.5 pt-7 mr-3.5 select-none">
-                        {['', 'Mon', '', 'Wed', '', 'Fri', ''].map((day, i) => (
-                          <div key={i} className="h-3.5 flex items-center">
-                            <span className="text-[8px] font-bold uppercase text-[var(--muted)] leading-none italic transform -translate-y-[1px]">
-                              {day}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-
-                      {(() => {
-                        const weeks = [];
-                        const today = new Date();
-                        const start = new Date(today);
-                        start.setDate(today.getDate() - 364);
-                        while (start.getDay() !== 0) start.setDate(start.getDate() - 1);
-
-                        for (let w = 0; w < 53; w++) {
-                          const days = [];
-                          for (let d = 0; d < 7; d++) {
-                            const current = new Date(start);
-                            current.setDate(start.getDate() + (w * 7) + d);
-                            if (current > today) {
-                              days.push(null);
-                              continue;
-                            }
-                            const key = Math.floor(current.getTime() / 1000).toString();
-                            const active = Object.keys(lcCalendar).find(k => Math.abs(parseInt(k) - parseInt(key)) < 43200);
-                            const count = active ? lcCalendar[active] : 0;
-                            days.push({ count, date: current });
-                          }
-                          weeks.push(days);
-                        }
-
-                        return weeks.map((week, wIdx) => {
-                          const firstDay = week.find(d => !!d);
-                          const isMonthStart = !!firstDay && firstDay.date.getDate() <= 7;
-                          return (
-                            <div key={wIdx} className="flex flex-col gap-1.5 relative">
-                              {isMonthStart && firstDay && (
-                                <span className="absolute -top-7 left-0 text-[10px] uppercase font-bold text-[var(--muted)] whitespace-nowrap">
-                                  {firstDay.date.toLocaleDateString(undefined, { month: 'short' })}
-                                </span>
-                              )}
-                              {week.map((day, dIdx) => (
-                                day ? (
-                                  <div
-                                    key={dIdx}
-                                    className="w-3.5 h-3.5 rounded-[2px] transition-all hover:scale-125 cursor-help relative group"
-                                    style={{
-                                      backgroundColor: day.count === 0 ? 'var(--cream-dark)' : `rgba(17,24,39, ${Math.min(day.count * 0.25, 1)})`,
-                                      border: day.count === 0 ? '1px solid var(--border)' : 'none'
-                                    }}
-                                  >
-                                    <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-[var(--charcoal)] text-[var(--cream)] text-[10px] rounded pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-50">
-                                      {day.count} sub. on {day.date.toLocaleDateString(undefined, { month: 'short', day: 'numeric' })}
-                                    </div>
-                                  </div>
-                                ) : <div key={dIdx} className="w-3.5 h-3.5" />
-                              ))}
-                            </div>
-                          );
-                        });
-                      })()}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      
 
       {/* ── Contact ───────────────────────────────────────────────────── */}
-      <section id="contact" className="py-32 scroll-mt-20" style={{ backgroundColor: 'var(--charcoal)' }}>
+      <section id="contact" className="py-20 scroll-mt-20 transition-colors duration-300" style={{ backgroundColor: darkMode ? '#000000' : '#1E1B22', borderTop: '3px solid #FFC839' }}>
         <div className="max-w-3xl mx-auto px-6 md:px-12 text-center">
-          <span className="text-xs font-semibold tracking-widest uppercase mb-6 block" style={{ color: 'var(--terracotta)' }}>
-            § Contact
+          <span className="text-xs font-bold tracking-widest uppercase mb-4 px-4 py-2 rounded-lg inline-block" style={{ color: '#1E1B22', backgroundColor: '#FFC839' }}>
+            Get in Touch
           </span>
-          <h2 className="serif text-5xl md:text-7xl leading-[1.05] mb-6" style={{ color: 'var(--cream)' }}>
-            Let's build something{' '}
-            <em className="serif-italic" style={{ color: 'var(--terracotta)' }}>together.</em>
+          <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-6" style={{ color: '#FFC839' }}>
+            Let's work together
           </h2>
-          <p className="text-base mb-12 mx-auto max-w-md leading-relaxed" style={{ color: 'rgba(253,251,247,0.45)' }}>
-            Open to full-time roles, freelance projects, or just a good conversation about technology.
+          <p className="text-lg mb-10 mx-auto max-w-md leading-relaxed" style={{ color: darkMode ? '#cccccc' : '#FFFAF5' }}>
+            I'm always interested in new projects and opportunities.
           </p>
           <button onClick={copyEmail}
-            className="inline-flex items-center gap-4 px-6 py-4 rounded-full mb-6 transition-all hover:opacity-80 cursor-pointer"
-            style={{ border: '1px solid rgba(250,247,242,0.12)', backgroundColor: 'rgba(250,247,242,0.05)', color: 'var(--cream)' }}>
-            <span className="font-mono text-sm">0112cs221008@gmail.com</span>
-            <span className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
-              style={{ backgroundColor: 'var(--terracotta)', color: 'var(--cream)' }}>
-              {copied ? <Check size={14} /> : <Copy size={14} />}
+            className="inline-flex items-center gap-3 px-10 py-5 rounded-xl mb-10 transition-all font-bold text-lg hover:shadow-2xl hover:scale-105"
+            style={{ backgroundColor: '#FFC839', color: '#1E1B22', cursor: 'pointer', border: 'none', boxShadow: '0 8px 24px rgba(255, 200, 57, 0.3)' }}>
+            <span className="font-mono text-base">0112cs221008@gmail.com</span>
+            <span className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
+              style={{ backgroundColor: '#1E1B22', color: '#FFC839' }}>
+              {copied ? <Check size={16} /> : <Copy size={16} />}
             </span>
           </button>
-          <div className="flex justify-center mb-12">
-            <a href="https://drive.google.com/file/d/YOUR_RESUME_ID/view" target="_blank" rel="noreferrer"
-              className="btn-primary"
-              style={{ background: 'rgba(255,255,255,0.15)', border: '1px solid rgba(255,255,255,0.25)', backdropFilter: 'blur(8px)', color: '#FAF4F1', boxShadow: '0 4px 20px rgba(0,0,0,0.25)' }}>
-              <Download size={15} /> Download Resume
-            </a>
-          </div>
-          <div className="flex justify-center gap-6 mb-20">
+          <div className="flex justify-center gap-4 mb-10">
             {[
-              { href: 'https://github.com/abhishek0112cs221008', icon: <Github size={20} /> },
-              { href: 'https://linkedin.com/in/abhishek68', icon: <Linkedin size={20} /> },
-              { href: 'mailto:0112cs221008@gmail.com', icon: <Mail size={20} /> },
+              { href: 'https://github.com/abhishek0112cs221008', icon: <Github size={24} /> },
+              { href: 'https://linkedin.com/in/abhishek68', icon: <Linkedin size={24} /> },
+              { href: 'mailto:0112cs221008@gmail.com', icon: <Mail size={24} /> },
             ].map((s, i) => (
               <a key={i} href={s.href} target={s.href.startsWith('mailto') ? undefined : '_blank'} rel="noreferrer"
-                className="icon-btn" style={{ background: 'rgba(255,255,255,0.15)', border: '1px solid rgba(255,255,255,0.2)', color: 'var(--cream)' }}>
+                className="w-14 h-14 rounded-xl flex items-center justify-center transition-all hover:shadow-lg hover:scale-110" style={{ background: '#FFC839', color: '#1E1B22', boxShadow: '0 4px 12px rgba(255, 200, 57, 0.2)' }}>
                 {s.icon}
               </a>
             ))}
           </div>
-          <p className="text-xs font-medium tracking-widest uppercase" style={{ color: 'rgba(250,247,242,0.2)' }}>
-            © 2026 Abhishek Patel
+          <p className="text-sm font-bold tracking-widest uppercase" style={{ color: '#FFC839' }}>
+            © 2026 Abhishek Patel • All Rights Reserved
           </p>
         </div>
       </section>
