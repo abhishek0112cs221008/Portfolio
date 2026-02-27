@@ -61,11 +61,6 @@ const REPO_META: Record<string, { label: string; desc: string; live?: string }> 
 };
 
 // Language → color dot
-const LANG_COLOR: Record<string, string> = {
-  Java: 'var(--charcoal)', TypeScript: '#3178c6', JavaScript: 'rgba(0,0,0,0.6)',
-  Dart: '#00B4AB', Python: '#3572A5', HTML: 'var(--charcoal)', default: 'var(--muted)',
-};
-
 // Skills data
 const SKILLS = [
   {
@@ -155,36 +150,8 @@ interface LCStats {
   totalHard: number;
 }
 
-interface LCCalendar {
-  submissionCalendar: string; // JSON string: { "timestamp": count }
-  totalSubmissions?: number;
-}
-
-interface LCContest {
-  contestRating: number;
-  contestGlobalRanking: number;
-  contestAttendUpper: number;
-  contestParticipation: any[];
-}
-
-interface LCBadge {
-  badgesCount: number;
-  badges: Array<{
-    name: string;
-    icon: string;
-    creationDate: string;
-  }>;
-}
-
 /* ─── Nav ───────────────────────────────────────────────────────────────── */
 const NAV_LINKS = ['About', 'Skills', 'Projects', 'Contact'];
-
-const STACK = [
-  'Java', '·', 'Spring Boot', '·', 'React', '·', 'MySQL', '·',
-  'Flutter', '·', 'REST APIs', '·', 'System Design', '·', 'DSA',
-  '·', 'Java', '·', 'Spring Boot', '·', 'React', '·', 'MySQL', '·',
-  'Flutter', '·', 'REST APIs', '·', 'System Design', '·', 'DSA',
-];
 
 /* ─── Component ─────────────────────────────────────────────────────────── */
 function App() {
@@ -195,11 +162,6 @@ function App() {
   const [repos, setRepos] = useState<GHRepo[]>([]);
   const [reposLoading, setReposLoading] = useState(true);
   const [lcStats, setLcStats] = useState<LCStats | null>(null);
-  const [lcCalendar, setLcCalendar] = useState<Record<string, number>>({});
-  const [lcActiveDays, setLcActiveDays] = useState(0);
-  const [lcMaxStreak, setLcMaxStreak] = useState(0);
-  const [lcContest, setLcContest] = useState<LCContest | null>(null);
-  const [lcBadges, setLcBadges] = useState<LCBadge | null>(null);
   const observerRef = useRef<IntersectionObserver | null>(null);
 
   /* Fetch LeetCode Data */
@@ -223,58 +185,8 @@ function App() {
       })
       .catch(() => { });
 
-    // Calendar/Heatmap
-    fetch(`https://alfa-leetcode-api.onrender.com/${LC_USERNAME}/calendar`)
-      .then(r => r.json())
-      .then((data: LCCalendar) => {
-        if (data?.submissionCalendar) {
-          const cal = JSON.parse(data.submissionCalendar);
-          setLcCalendar(cal);
 
-          // Calculate active days & streak
-          const timestamps = Object.keys(cal).map(t => parseInt(t)).sort((a, b) => a - b);
-          const dates = timestamps.map(t => new Date(t * 1000).toDateString());
-          const uniqueDates = Array.from(new Set(dates));
-          setLcActiveDays(uniqueDates.length);
 
-          // Max Streak
-          let max = 0, current = 0, lastDate: Date | null = null;
-          const sortedDates = Array.from(new Set(timestamps.map(t => {
-            const d = new Date(t * 1000);
-            d.setHours(0, 0, 0, 0);
-            return d.getTime();
-          }))).sort((a, b) => a - b);
-
-          sortedDates.forEach(time => {
-            const d = new Date(time);
-            if (lastDate && (d.getTime() - lastDate.getTime()) === 86400000) {
-              current++;
-            } else {
-              current = 1;
-            }
-            max = Math.max(max, current);
-            lastDate = d;
-          });
-          setLcMaxStreak(max);
-        }
-      })
-      .catch(() => { });
-
-    // Contest stats
-    fetch(`https://alfa-leetcode-api.onrender.com/${LC_USERNAME}/contest`)
-      .then(r => r.json())
-      .then(data => {
-        if (data?.contestRating) setLcContest(data);
-      })
-      .catch(() => { });
-
-    // Badges
-    fetch(`https://alfa-leetcode-api.onrender.com/${LC_USERNAME}/badges`)
-      .then(r => r.json())
-      .then(data => {
-        if (data?.badgesCount) setLcBadges(data);
-      })
-      .catch(() => { });
   }, []);
 
   /* Fetch GitHub repos */
@@ -671,3 +583,5 @@ function App() {
 }
 
 export default App;
+
+
