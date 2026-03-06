@@ -367,8 +367,8 @@ function App() {
       </div>
 
       {/* ── Navbar ── */}
-      <header className={`sticky top-0 z-40 px-6 md:px-12 py-5 flex items-center justify-between border-b-2 transition-colors duration-300 ${dm ? 'glass-nav-dark' : 'glass-nav-light'}`}
-        style={{ borderBottomColor: 'rgba(255,200,57,0.3)' }}>
+      <header className={`sticky top-0 z-40 px-6 md:px-12 py-4 flex items-center justify-between border-b transition-colors duration-300 ${dm ? 'glass-nav-dark' : 'glass-nav-light'}`}
+        style={{ borderBottomColor: 'rgba(255,200,57,0.15)' }}>
         <a href="#home" style={{ fontFamily: 'var(--font-heading)', fontSize: '1.6rem', fontWeight: 700, letterSpacing: '-0.03em', color: dm ? '#FFC839' : '#1E1B22' }}>
           Abhishek<span style={{ color: '#FFC839' }}>.</span>
         </a>

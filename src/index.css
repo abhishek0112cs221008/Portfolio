@@ -118,6 +118,13 @@
 /* ─── Base ─── */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+  /* Offset for sticky header */
+}
+
+/* Ensure sections have top margin for anchor links */
+section {
+  scroll-margin-top: 80px;
 }
 
 body {
@@ -777,6 +784,21 @@ a:hover {
 .back-to-top:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 32px rgba(255, 200, 57, 0.55);
+}
+
+@media (max-width: 768px) {
+  .back-to-top {
+    bottom: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 200, 57, 0.15) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: var(--gold);
+    border: 1px solid rgba(255, 200, 57, 0.3) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
 }
 
 /* ─── Marquee ─── */
